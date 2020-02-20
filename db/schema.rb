@@ -10,25 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_193204) do
+ActiveRecord::Schema.define(version: 2020_02_18_212606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.bigint "position_id"
+    t.bigint "user_id"
+    t.boolean "user_approval"
+    t.boolean "owner_approval"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position_id"], name: "index_applications_on_position_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.string "title"
     t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "pending_applications", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "position_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["position_id"], name: "index_pending_applications_on_position_id"
-    t.index ["user_id"], name: "index_pending_applications_on_user_id"
   end
 
   create_table "position_names", force: :cascade do |t|
