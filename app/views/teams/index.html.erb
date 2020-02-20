@@ -1,1 +1,6 @@
 <h1>hello from teams</h1>
+<% @teams.each do |team| %>
+  <%= team.name %>
+  <%= team.game.title %>
+  <%= team.user.email %>
+<% end %>
