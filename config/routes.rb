@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
 
   resources :teams do
-    resources :pending_applications, only [ :create ]
+    resources :pending_applications, only: [ :create ]
   end
 
 end
