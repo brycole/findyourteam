@@ -1,0 +1,2 @@
+class PendingApplicationsController < ApplicationController
+end
