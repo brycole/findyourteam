@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="form-edit">
+      <h3><%= title %></h3>
+        <%= simple_form_for(game) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :genre %>
+        <%= f.submit "Select", class: "btn btn-outline-dark" %> <%= link_to "Back to games", games_path, class: "btn btn-outline-dark" %>
+      <% end %>
+    </div>
+   </div>
+  </div>
+</div>
