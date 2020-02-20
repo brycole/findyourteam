@@ -1,16 +1,16 @@
 class GamesController < ApplicationController
-    before_action :set_game
+  before_action :set_game
 
   def index
-   @games = Game.all
+    @games = Game.all
   end
 
   def create
-   @game = Game.new(game_params)
-   @game.save
+    @game = Game.new(game_params)
+    @game.save
   end
 
-private
+  private
 
   def set_game
     @game = Game.find(params[:id])
@@ -19,5 +19,4 @@ private
   def game_params
     params.require(:game).permit(%i[title genre])
   end
-
 end
