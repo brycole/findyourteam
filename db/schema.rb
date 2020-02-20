@@ -10,10 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_210514) do
+ActiveRecord::Schema.define(version: 2020_02_20_193204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.string "title"
+    t.string "genre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pending_applications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "position_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position_id"], name: "index_pending_applications_on_position_id"
+    t.index ["user_id"], name: "index_pending_applications_on_user_id"
+  end
+
+  create_table "position_names", force: :cascade do |t|
+    t.string "name"
+    t.bigint "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_position_names_on_game_id"
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.bigint "position_name_id"
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position_name_id"], name: "index_positions_on_position_name_id"
+    t.index ["team_id"], name: "index_positions_on_team_id"
+    t.index ["user_id"], name: "index_positions_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.bigint "game_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_teams_on_game_id"
+    t.index ["user_id"], name: "index_teams_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +71,12 @@ ActiveRecord::Schema.define(version: 2020_02_18_210514) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pending_applications", "positions"
+  add_foreign_key "pending_applications", "users"
+  add_foreign_key "position_names", "games"
+  add_foreign_key "positions", "position_names"
+  add_foreign_key "positions", "teams"
+  add_foreign_key "positions", "users"
+  add_foreign_key "teams", "games"
+  add_foreign_key "teams", "users"
 end
