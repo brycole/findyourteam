@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-games = [{ title: "Dota2", genre: "MOBA" }, { title: "CS: GO", genre: "FPS" }, { title: "League of Legends", genre: "MOBA" }]
+games = [{ title: "Dota2", genre: "MOBA" },
+         { title: "CS: GO", genre: "FPS" },
+         { title: "League of Legends", genre: "MOBA" }]
 games.each do |game|
   game = Game.new(game)
   game.save
@@ -28,3 +30,69 @@ position_names_csgo.each do |position_name|
   position_name.game = game
   position_name.save
 end
+
+puts 'Creating users'
+
+User.create!(
+  email: 'vladi@gmail.com',
+  password: 'password')
+
+User.create!(
+  email: 'rachid@gmail.com',
+  password: 'password')
+
+User.create!(
+  email: 'bryan@gmail.com',
+  password: 'password')
+
+User.create!(
+  email: 'atsede@gmail.com',
+  password: 'password')
+
+User.create!(
+  email: 'bob@gmail.com',
+  password: 'password')
+
+puts 'Users created'
+
+
+puts 'Creating Teams'
+
+Team.create!(
+  name: 'Team Secret',
+  game_id: 1,
+  user_id: 1)
+puts "team 1 created."
+
+Team.create!(
+  name: 'Evil Geniuses',
+  game_id: 2,
+  user_id: 2)
+puts "team 2 created."
+
+
+Team.create!(
+  name: 'Vici Gaming',
+  game_id: 1,
+  user_id: 3)
+puts "team 3 created."
+
+
+Team.create!(
+  name: 'PSG.LGD',
+  game_id: 2,
+  user_id: 4)
+puts "team 4 created."
+
+
+Team.create!(
+  name: 'Virtus.pro',
+  game_id: 2,
+  user_id: 5)
+puts "team 5 created."
+
+
+puts 'Teams created'
+
+
+
