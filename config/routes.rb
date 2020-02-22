@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :teams do
     resources :positions
-    resources :pending_applications, only: [ :create ]
   end
+
+  resources :pending_applications, only: [ :index, :create ]
 end

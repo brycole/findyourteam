@@ -3,7 +3,7 @@ class PositionsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @positions = Position.all
+    @positions = Position.where(team_id: @team)
   end
 
   def new
