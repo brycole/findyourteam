@@ -1,12 +1,13 @@
 import "bootstrap";
 
-dota2_button = document.getElementById('dota2');
-csgo_button = document.getElementById('csgo');
-lol_button = document.getElementById('lol');
-select_cs = document.getElementById('select-cs');
-select_dota2 = document.getElementById('select-dota2');
-select_lol = document.getElementById('select-lol');
-video_dom = document.getElementById('home-video-wrapper-id');
+
+const dota2_button = document.getElementById('dota2');
+const csgo_button = document.getElementById('csgo');
+const lol_button = document.getElementById('lol');
+const select_cs = document.getElementById('select-cs');
+const select_dota2 = document.getElementById('select-dota2');
+const select_lol = document.getElementById('select-lol');
+const video_dom = document.getElementById('home-video-wrapper-id');
 dota2_button.addEventListener("click", (event) => {
     select_dota2.style.display = 'block';
     select_cs.style.display = 'none';
