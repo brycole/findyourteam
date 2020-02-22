@@ -1,19 +1,2 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      <div class="form-edit">
-      <h3><%= title %></h3>
-        <%= simple_form_for(team) do |f| %>
-        <%= f.input :name %>
-        <%= f.input :game_id %>
-        <%= f.input :category %>
-        <%= f.input :price %>
-        <%= f.input :cooking_time %>
-        <%= f.input :address %>
-        <%= f.input :photo, as: :file %>
-        <%= f.submit "Submit", class: "btn btn-outline-dark" %> <%= link_to "Back to meals", meals_path, class: "btn btn-outline-dark" %>
-      <% end %>
-    </div>
-   </div>
-  </div>
-</div>
+<%= render 'form', team: @team, title: 'Create a Team' %>
+

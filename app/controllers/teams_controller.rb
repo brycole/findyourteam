@@ -15,12 +15,10 @@ class TeamsController < ApplicationController
   end
 
   def create
-   @game = Game.find(params[:game_id])
    @team = Team.new(team_params)
-   @team.game = @game
 
-    if @team.save
-      redirect_to team_path(@game.team)
+    if @team.save!
+      redirect_to teams_path
     else
       render :new
     end
@@ -46,6 +44,6 @@ class TeamsController < ApplicationController
   end
 
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name, :user_id, :game_id)
   end
 end
