@@ -1,6 +1,21 @@
-<h1>hello from teams</h1>
-<% @teams.each do |team| %>
-  <%= team.name %>
-  <%= team.game.title %>
-  <%= team.user.email %>
-<% end %>
+
+<div>
+  <table class="table table-dark table-hover table-borderless table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Team Name</th>
+        <th scope="col">Game Title</th>
+        <th scope="col">User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @teams.each do |team| %>
+        <tr>
+          <td><%= link_to team.name, team_path(team) %></td>
+          <td><%= team.game.title %></td>
+          <td><%= team.user.email.split('@').first.capitalize %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
