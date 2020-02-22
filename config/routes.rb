@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   resources :games
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
   resources :teams do
+    resources :positions
     resources :pending_applications, only: [ :create ]
   end
-
 end
