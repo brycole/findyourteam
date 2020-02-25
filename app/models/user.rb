@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :applications
   has_many :teams
   has_many :positions
+  has_one_attached :photo
 end
