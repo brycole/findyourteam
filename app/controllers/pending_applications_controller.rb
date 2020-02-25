@@ -27,7 +27,7 @@ class PendingApplicationsController < ApplicationController
   end
 
   def destroy
-    @appplication.destroy
+    @application.destroy
   end
 
   private
