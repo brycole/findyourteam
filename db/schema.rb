@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_203832) do
+ActiveRecord::Schema.define(version: 2020_02_25_201658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 2020_02_20_203832) do
     t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "pending_applications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "position_id"
+    t.boolean "owner_approval", default: false
+    t.boolean "user_approval", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position_id"], name: "index_pending_applications_on_position_id"
+    t.index ["user_id"], name: "index_pending_applications_on_user_id"
   end
 
   create_table "position_names", force: :cascade do |t|
