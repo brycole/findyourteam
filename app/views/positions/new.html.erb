@@ -1,0 +1,4 @@
+<%= simple_form_for [@team, @position] do |f| %>
+  <%= f.input :position_name, as: :select, collection: @position_names, prompt: 'Select a position name', label: false %>
+  <%= f.submit "Add a position", class: "btn btn-primary" %>
+<% end %>
