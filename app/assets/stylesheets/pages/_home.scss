@@ -1,1 +1,71 @@
 // Specific CSS for your home-page
+
+
+.home_video {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  z-index: -2;
+}
+
+.home-video-wrapper {
+  height: 100vh;
+  display: flex;
+}
+
+h1.home {
+  color: white;
+}
+
+.select-a-game {
+  background-color: black;
+  color: white;
+  opacity: 0.7;
+  margin: auto;
+  padding: 8px;
+  font-size: 32px;
+  text-align:center;
+  width: 400px;
+  border-radius: 32px;
+  p {
+    margin: 0px;
+  }
+}
+
+.all-games {
+  display: flex;
+  justify-content: center;
+}
+
+.games-selector {
+  background-color: white;
+  color: white;
+  opacity: 0.6;
+  margin: 0px;
+  padding: 16px;
+  text-align: center;
+  border-radius: 8px;
+  margin: 4px;
+  &:hover {
+    opacity: 1;
+    box-shadow: 0 15px 10px #777;
+  }
+}
+
+.select-this-game {
+  display: none;
+  background-color: black;
+  color: white;
+  opacity: 0.7;
+  margin: auto;
+  padding: 8px;
+  font-size: 32px;
+  text-align:center;
+  width: 400px;
+  border-radius: 32px;
+  p {
+    margin: 0px;
+  }
+}

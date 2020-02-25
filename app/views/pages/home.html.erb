@@ -1,5 +1,26 @@
-<h1>FindYourTeam</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-
-
+<div class="select-a-game">
+  <p><strong>Select your game</strong></p>
+</div>
+<div class="all-games">
+  <div class="games-selector" id="dota2">
+    <%= image_tag 'dota2.png', height: 100, width: 100, crop: :fill %>
+  </div>
+  <div class="games-selector" id="csgo">
+    <%= image_tag 'csgo.png', height: 100, width: 100, crop: :fill %>
+  </div>
+  <div class="games-selector" id="lol">
+    <%= image_tag 'lol.png', height: 100, width: 100, crop: :fill %>
+  </div>
+</div>
+<div class="select-this-game" id="select-cs">
+  <p><%= link_to "View all CS:GO teams", teams_path %></p>
+</div>
+<div class="select-this-game" id="select-lol">
+  <p><%= link_to "View all LoL teams", teams_path %></p>
+</div>
+<div class="select-this-game" id="select-dota2">
+  <p><%= link_to "View all Dota2 teams", teams_path %></p>
+</div>
+<div class="home-video-wrapper" id="home-video-wrapper-id">
+  <%= video_tag @video, autoplay: true, loop: true, muted: true, controls: false, class: "home_video" %>
+</div>
