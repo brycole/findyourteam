@@ -1,0 +1,26 @@
+
+
+<div>
+  <table class="table table-dark table-hover table-borderless table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Application number</th>
+        <th scope="col">Position</th>
+        <th scope="col">User</th>
+        <th scope="col">User Approval</th>
+        <th scope="col">Captain Approval</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @applications.each do |application| %>
+        <tr>
+          <td><%= application.id %></td>
+          <td><%= application.position.position_name.name %></td>
+          <td><%= application.user.email %></td>
+          <td><%= application.user_approval %></td>
+          <td><%= application.owner_approval %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
