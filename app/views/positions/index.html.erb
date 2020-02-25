@@ -8,6 +8,9 @@
         <strong>
         <%= link_to 'APPLY', pending_applications_path(position.id), method: :post %>
         </strong>
+          <% if position.captain? %>
+            <%= link_to "Show applications", team_position_path(@team.id) %>
+          <% end %>
       </p>
         <p>Position still empty </p>
       <% else %>

@@ -6,6 +6,11 @@ class PendingApplicationsController < ApplicationController
     @applications = PendingApplication.all
   end
 
+  def captain_listings
+    @applications = PendingApplication.joins.where(:team).where(teams: { user: current_user })
+    raise
+  end
+
   def show
   end
 

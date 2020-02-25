@@ -21,6 +21,10 @@ class PositionsController < ApplicationController
     redirect_to team_positions_path(@team.id)
   end
 
+  def captain?
+    position.team.captain?(current_user)
+  end
+
   def destroy
     @position = Position.find(params[:id])
     @position.delete
