@@ -1,5 +1,5 @@
 class PendingApplicationsController < ApplicationController
-  before_action :set_application, only: %i[show destroy]
+  before_action :set_application, only: %i[show destroy captain_approve]
 
 
   def index
@@ -10,6 +10,13 @@ class PendingApplicationsController < ApplicationController
 
   def captain?(team)
     team.user == current_user
+  end
+
+  def captain_approve
+    team = Team.find(params[:team_id])
+    @pending_application.owner_approval = true
+    @pending_application.save
+    redirect_to team_positions_path(team)
   end
 
   def show

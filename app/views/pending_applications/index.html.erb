@@ -23,7 +23,7 @@
           <td><%= application.owner_approval %></td>
           <% if @captain %>
             <% if application.owner_approval == false %>
-              <td>CAP APPROVE</td>
+              <td><%= button_to 'Approve', captain_approve_path(team_id:@team.id, id:application.id), method: :post %></td>
             <% end %>
           <% elsif application.user_approval == false %>
             <td>PLAYER APPROVE</td>

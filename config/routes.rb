@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   end
 
   get 'positions', to: 'positions#all'
+  post 'captain_approve', to: 'pending_applications#captain_approve'
+
 end
