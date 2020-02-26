@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     resources :positions
     resources :pending_applications, only: [ :index, :create ]
   end
+
+  get 'positions', to: 'positions#all'
 end

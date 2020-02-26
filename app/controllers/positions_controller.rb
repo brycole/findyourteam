@@ -6,6 +6,10 @@ class PositionsController < ApplicationController
     @positions = Position.where(team_id: @team)
   end
 
+  def all
+    @positions = Position.all
+  end
+
   def new
     @position_names = PositionName.where(game_id: @team.game)
     @position = Position.new
