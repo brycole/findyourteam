@@ -3,42 +3,44 @@ class PendingApplicationsController < ApplicationController
 
 
   def index
-    @applications = PendingApplication.all
+    @team = Team.find(params[:team_id])
+    @captain = captain?(@team)
+    @pending_applications = @team.pending_applications
   end
 
-  def captain_listings
-    @applications = PendingApplication.joins.where(:team).where(teams: { user: current_user })
-    raise
+  def captain?(team)
+    team.user == current_user
   end
 
   def show
   end
 
   def create
-    @application = PendingApplication.new
-    @application.user = current_user
-    @application.position = Position.find(params[:format])
-    if @application.position.team.captain?(current_user)
-      @application.owner_approval = true
+    @position = Position.find(params[:position_id])
+    @pending_application = PendingApplication.new
+    @pending_application.user = current_user
+    @pending_application.position = @position
+    if @pending_application.position.team.captain?(current_user)
+      @pending_application.owner_approval = true
     else
-      @application.user_approval = true
+      @pending_application.user_approval = true
     end
 
-    if @application.save
-      redirect_to pending_applications_path
+    if @pending_application.save
+      redirect_to team_pending_applications_path(@position.team)
     else
-      redirect_to team_positions_path(team)
+      redirect_to team_pending_applications_path(@position.team)
     end
   end
 
   def destroy
-    @application.destroy
+    @pending_application.destroy
   end
 
   private
 
   def set_application
-    @application = PendingApplication.find(params[:id])
+    @pending_application = PendingApplication.find(params[:id])
   end
 
 end

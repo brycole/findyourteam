@@ -1,16 +1,19 @@
 <h1>Positions for <%= @team.name %></h1>
 <h3><%= link_to "Create a new position", new_team_position_path(@team.id) %></h3>
+<h4><% if @team.captain?(current_user) %>
+  <%= link_to "Approve applications", team_pending_applications_path(@team) %>
+<% else %>
+  <%= link_to "Show applications", team_pending_applications_path(@team) %>
+<% end %>
+</h4>
 <ol>
   <% @positions.each do |position| %>
     <li>
       <p><%= position.position_name.name %>
       <% if position.user.nil? %>
         <strong>
-        <%= link_to 'APPLY', pending_applications_path(position.id), method: :post %>
+        <%= link_to 'APPLY', team_pending_applications_path(@team, position_id:position.id), method: :post %>
         </strong>
-          <% if position.captain? %>
-            <%= link_to "Show applications", team_position_path(@team.id) %>
-          <% end %>
       </p>
         <p>Position still empty </p>
       <% else %>
