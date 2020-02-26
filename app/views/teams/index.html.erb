@@ -1,5 +1,6 @@
 
 <div>
+  <h2>Teams for <%= current_user.show_game %></h2>
   <table class="table table-dark table-hover table-borderless table-sm">
     <thead>
       <tr>
@@ -18,6 +19,7 @@
       <% end %>
     </tbody>
   </table>
+  <%= link_to 'Create Team', new_team_path, class: "btn btn-outline-dark" %>
 </div>
 
 
