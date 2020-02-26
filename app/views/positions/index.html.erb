@@ -17,7 +17,7 @@
       </p>
         <p>Position still empty </p>
       <% else %>
-        <p><%= position.user %></p>
+        <p><%= position.user.email %></p>
       <% end %>
         <p><%= link_to "Delete position", team_position_path(@team.id, position.id),
         method: :delete,

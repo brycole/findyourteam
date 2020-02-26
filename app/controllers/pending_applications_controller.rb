@@ -16,7 +16,20 @@ class PendingApplicationsController < ApplicationController
     team = Team.find(params[:team_id])
     @pending_application.owner_approval = true
     @pending_application.save
+
+    fill_position
     redirect_to team_positions_path(team)
+  end
+
+  def fill_position
+    @position = Position.find(@pending_application.position.id)
+    if @position.user.nil?
+      if @pending_application.owner_approval == true && @pending_application.user_approval == true
+        @position.user = @pending_application.user
+        @position.save
+        destroy
+      end
+    end
   end
 
   def show
