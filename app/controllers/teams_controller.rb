@@ -6,17 +6,24 @@ class TeamsController < ApplicationController
     @teams = Team.all
   end
 
+  def set_user_team
+    current_user.show_game = params[:game]
+    current_user.save
+    redirect_to teams_path
+  end
+
   def show
   end
 
   def new
-    @game = Game.find(params[:game_id])
+    @game = Game.find(current_user.show_game)
     @team = Team.new
   end
 
   def create
-   @team = Team.new(team_params)
-
+    @game = Game.find(current_user.show_game)
+    @team = Team.new(team_params)
+    @team.game = @game
     if @team.save!
       redirect_to teams_path
     else
