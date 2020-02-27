@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 2020_02_27_194457) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "applications", force: :cascade do |t|
+    t.bigint "position_id"
+    t.bigint "user_id"
+    t.boolean "user_approval"
+    t.boolean "owner_approval"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position_id"], name: "index_applications_on_position_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.string "title"
     t.string "genre"
@@ -91,8 +102,8 @@ ActiveRecord::Schema.define(version: 2020_02_27_194457) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "show_game"
     t.string "nickname"
+    t.string "show_game"
     t.integer "rank"
     t.bigint "game_id"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -101,6 +112,8 @@ ActiveRecord::Schema.define(version: 2020_02_27_194457) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "applications", "positions"
+  add_foreign_key "applications", "users"
   add_foreign_key "pending_applications", "positions"
   add_foreign_key "pending_applications", "users"
   add_foreign_key "position_names", "games"
