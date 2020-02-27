@@ -27,7 +27,7 @@ class PendingApplicationsController < ApplicationController
       if @pending_application.owner_approval == true && @pending_application.user_approval == true
         @position.user = @pending_application.user
         @position.save
-        destroy
+        # destroy
       end
     end
   end

@@ -32,6 +32,10 @@ class PositionsController < ApplicationController
     redirect_to team_positions_path(params[:team_id])
   end
 
+  def clear_position
+    redirect_to team_positions_path(@position.team_id)
+  end
+
   private
 
   def set_team
