@@ -36,17 +36,6 @@ ActiveRecord::Schema.define(version: 2020_02_27_194457) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "applications", force: :cascade do |t|
-    t.bigint "position_id"
-    t.bigint "user_id"
-    t.boolean "user_approval"
-    t.boolean "owner_approval"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["position_id"], name: "index_applications_on_position_id"
-    t.index ["user_id"], name: "index_applications_on_user_id"
-  end
-
   create_table "games", force: :cascade do |t|
     t.string "title"
     t.string "genre"
