@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 2020_02_25_201658) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pending_applications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "position_id"
+    t.boolean "owner_approval", default: false
+    t.boolean "user_approval", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["position_id"], name: "index_pending_applications_on_position_id"
+    t.index ["user_id"], name: "index_pending_applications_on_user_id"
+  end
+  
   create_table "position_names", force: :cascade do |t|
     t.string "name"
     t.bigint "game_id"
