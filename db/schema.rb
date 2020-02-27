@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_201658) do
     t.index ["position_id"], name: "index_pending_applications_on_position_id"
     t.index ["user_id"], name: "index_pending_applications_on_user_id"
   end
-
+  
   create_table "position_names", force: :cascade do |t|
     t.string "name"
     t.bigint "game_id"
