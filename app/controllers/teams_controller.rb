@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: %i[show edit destroy update]
 
   def index
-    @teams = Team.all
+    @teams = Team.where(game_id: params[:game_id])
   end
 
   def show
