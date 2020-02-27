@@ -12,7 +12,7 @@
     <tbody>
       <% @teams.each do |team| %>
         <tr>
-          <td><%= link_to team.name, team_path(team) %></td>
+          <td><%= link_to team.name, team_positions_path(team) %></td>
           <td><%= team.game.title %></td>
           <td><%= team.user.email.split('@').first.capitalize %></td>
       </tr>
