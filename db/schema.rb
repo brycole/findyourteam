@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_201658) do
+ActiveRecord::Schema.define(version: 2020_02_27_194457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,7 +105,9 @@ ActiveRecord::Schema.define(version: 2020_02_25_201658) do
     t.string "show_game"
     t.string "nickname"
     t.integer "rank"
+    t.bigint "game_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["game_id"], name: "index_users_on_game_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -120,4 +122,5 @@ ActiveRecord::Schema.define(version: 2020_02_25_201658) do
   add_foreign_key "positions", "users"
   add_foreign_key "teams", "games"
   add_foreign_key "teams", "users"
+  add_foreign_key "users", "games"
 end
