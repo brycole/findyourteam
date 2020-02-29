@@ -1,27 +1,35 @@
 <h1>Positions for <%= @team.name %></h1>
-<h3><%= link_to "Create a new position", new_team_position_path(@team.id) %></h3>
-<h4><% if @team.captain?(current_user) %>
-  <%= link_to "Approve applications", team_pending_applications_path(@team) %>
+
+<% if @team.captain?(current_user) %>
+  <h4> <%= link_to "Create a new position", new_team_position_path(@team.id) %> </h4>
+  <h4> <%= link_to "Approve applications", team_pending_applications_path(@team) %> </h4>
 <% else %>
-  <%= link_to "Show applications", team_pending_applications_path(@team) %>
+  <%#= link_to "Show applications", team_pending_applications_path(@team) %>
 <% end %>
-</h4>
+
 <ol>
   <% @positions.each do |position| %>
     <li>
       <p><%= position.position_name.name %>
       <% if position.user.nil? %>
-        <strong>
-        <%= link_to 'APPLY', team_pending_applications_path(@team, position_id:position.id), method: :post %>
-        </strong>
+        <% if @applied.include?(position.id) %>
+          <strong> ALREADY APPLIED</strong>
+        <% else %>
+          <strong> <%= link_to 'APPLY', team_pending_applications_path(@team, position_id:position.id), method: :post %> </strong>
+        <% end %>
       </p>
         <p>Position still empty </p>
       <% else %>
         <p><%= position.user.email %></p>
+        <% if @team.captain?(current_user) %>
+          <%= link_to 'Remove Player', team_position_path(@team, id:position.id), method: :put %>
+        <% end %>
       <% end %>
-        <p><%= link_to "Delete position", team_position_path(@team.id, position.id),
-        method: :delete,
-        data: { confirm: "Are you sure?" } %></p>
+        <% if @team.captain?(current_user) %>
+          <p><%= link_to "Delete position", team_position_path(@team.id, position.id),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %></p>
+        <% end %>
     </li>
   <% end %>
 </ol>

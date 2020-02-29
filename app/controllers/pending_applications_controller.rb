@@ -24,10 +24,10 @@ class PendingApplicationsController < ApplicationController
   def fill_position
     @position = Position.find(@pending_application.position.id)
     if @position.user.nil?
-      if @pending_application.owner_approval == true && @pending_application.user_approval == true
+      if @pending_application.owner_approval && @pending_application.user_approval
         @position.user = @pending_application.user
         @position.save
-        # destroy
+        destroy
       end
     end
   end
@@ -42,14 +42,16 @@ class PendingApplicationsController < ApplicationController
     @pending_application.position = @position
     if @pending_application.position.team.captain?(current_user)
       @pending_application.owner_approval = true
+      @pending_application.user_approval = true
     else
       @pending_application.user_approval = true
     end
 
     if @pending_application.save
-      redirect_to team_pending_applications_path(@position.team)
+      fill_position
+      redirect_to team_positions_path(@position.team)
     else
-      redirect_to team_pending_applications_path(@position.team)
+      redirect_to team_positions_path(@position.team)
     end
   end
 
