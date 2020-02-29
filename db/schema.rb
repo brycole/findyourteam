@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(version: 2020_02_27_194457) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "show_game"
     t.string "nickname"
+    t.string "show_game"
     t.integer "rank"
     t.bigint "game_id"
     t.index ["email"], name: "index_users_on_email", unique: true
