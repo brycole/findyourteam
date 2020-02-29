@@ -6,12 +6,40 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 games = [{ title: "Dota2", genre: "MOBA" },
          { title: "CS: GO", genre: "FPS" },
          { title: "League of Legends", genre: "MOBA" }]
 games.each do |game|
   game = Game.new(game)
   game.save
+end
+
+
+
+ t.string :name
+      t.integer :rank_position
+      t.string :image
+      t.references :game, foreign_key: true
+
+game = Game.find_by(title: "CS: GO")
+rank_names_csgo = ["Silver I", "Silver II", "Silver III", "Silver IV", "Silver Elite", "Silver Elite Master", "Gold Nova I", "Gold Nova II", "Gold Nova III", "Gold Nova Master", "Master Guardian I", "Master Guardian II", "Master Guardian Elite", "Distinguished Master Guardian", "Legendary Eagle", "Legendary Eagle Master", "Supreme Master First Class", "The Global Elite"]
+rank_position_csgo = [*1..18]
+image_file = "cs-rank"
+
+rank_position_csgo.each do |i|
+  puts "Generating CS:GO ranks..."
+  temp_file = image_file.dup
+  temp_file << "#{i}.png"
+  rank = Rank.new
+  puts "Adding rank #{rank_names_csgo[i-1]}..."
+  rank.name = rank_names_csgo[i-1]
+  # puts "Rank_position...#{i}"
+  rank.rank_position = i
+  #  puts temp_file
+  rank.image = temp_file
+  rank.game = game
+  rank.save
 end
 
 position_names_dota2 = ["Jungler", "Carry", "Solo", "Offlaner", "Support"]
