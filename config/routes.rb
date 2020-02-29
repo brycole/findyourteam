@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :teams, only: [:show, :index, :new, :create] do
     resources :positions
+    resources :pending_applications, only: [ :index, :create ]
   end
 
-  resources :pending_applications, only: [ :index, :create ]
+  get 'positions', to: 'positions#all'
+  post 'captain_approve', to: 'pending_applications#captain_approve'
 
   resources :players, only: [ :show ]
 
