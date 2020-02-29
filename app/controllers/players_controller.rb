@@ -1,7 +1,5 @@
 class PlayersController < ApplicationController
-
-
   def show
-    @players = User.all
+    @player = current_user
   end
 end
