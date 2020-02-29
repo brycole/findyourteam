@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   resources :pending_applications, only: [ :index, :create ]
 
-  resources :players, only: [ :show ]
+  resources :players, only: [ :index, :show ]
 
 end

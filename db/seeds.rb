@@ -35,23 +35,73 @@ puts 'Creating users'
 
 User.create!(
   email: 'vladi@gmail.com',
-  password: 'password')
+  password: 'password',
+  nickname: 'Destroyer',
+  show_game: 'Dota2',
+  rank: 4)
 
 User.create!(
   email: 'rachid@gmail.com',
-  password: 'password')
+  password: 'password',
+  nickname: 'Fly',
+  show_game: 'CS: GO',
+  rank: 2)
 
 User.create!(
   email: 'bryan@gmail.com',
-  password: 'password')
+  password: 'password',
+  nickname: 'Miracle',
+  show_game: 'LoL',
+  rank: 3)
 
 User.create!(
   email: 'atsede@gmail.com',
-  password: 'password')
+  password: 'password',
+  nickname: 'kill_bill',
+  show_game: 'Dota2',
+  rank: 1)
 
 User.create!(
   email: 'bob@gmail.com',
-  password: 'password')
+  password: 'password',
+  nickname: 'Resolution',
+  show_game: 'LoL',
+  rank: 5)
+
+User.create!(
+  email: 'sarah@gmail.com',
+  password: 'password',
+  nickname: 's5',
+  show_game: 'Dota2',
+  rank: 6)
+
+User.create!(
+  email: 'scott@gmail.com',
+  password: 'password',
+  nickname: 'Ceb',
+  show_game: 'CS: GO',
+  rank: 7)
+
+User.create!(
+  email: 'finn@gmail.com',
+  password: 'password',
+  nickname: 'Topson',
+  show_game: 'LoL',
+  rank: 8)
+
+User.create!(
+  email: 'beyonce@gmail.com',
+  password: 'password',
+  nickname: 'NBK',
+  show_game: 'Dota2',
+  rank: 9)
+
+User.create!(
+  email: 'tupac@gmail.com',
+  password: 'password',
+  nickname: 'QO',
+  show_game: 'LoL',
+  rank: 10)
 
 puts 'Users created'
 
