@@ -4,7 +4,7 @@ class PendingApplicationsController < ApplicationController
 
   def index
     @team = Team.find(params[:team_id])
-    @captain = captain?(@team)
+    @is_captain = captain?(@team)
     @pending_applications = @team.pending_applications
   end
 

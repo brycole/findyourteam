@@ -21,7 +21,7 @@
           <td><%= application.user.email %></td>
           <td><%= application.user_approval %></td>
           <td><%= application.owner_approval %></td>
-          <% if @captain %>
+          <% if @is_captain %>
             <% if application.owner_approval == false %>
               <td><%= button_to 'Approve', captain_approve_path(team_id:@team.id, id:application.id), method: :post %></td>
             <% end %>
