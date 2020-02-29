@@ -1,0 +1,7 @@
+
+
+
+<% @ranks.each do |rank| %>
+  <div> <%= image_tag rank.image, height: 50, width: 100, crop: :fill %> </div>
+  <div> <%= rank.name %> </div>
+<% end %>
