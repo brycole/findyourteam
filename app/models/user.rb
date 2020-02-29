@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :teams
   has_many :positions
 
-  belongs_to :game
+  belongs_to :game, optional: true
   has_one_attached :photo
 end

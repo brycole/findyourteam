@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: %i[show edit destroy update]
 
   def index
-    @teams = Team.all
+    @teams = Team.where(game_id: current_user.show_game)
   end
 
   def set_user_team
@@ -21,9 +21,11 @@ class TeamsController < ApplicationController
   end
 
   def create
+
     @game = Game.find(current_user.show_game)
     @team = Team.new(team_params)
     @team.game = @game
+
     if @team.save!
       redirect_to teams_path
     else
