@@ -21,9 +21,11 @@ class TeamsController < ApplicationController
   end
 
   def create
+
     @game = Game.find(current_user.show_game)
     @team = Team.new(team_params)
     @team.game = @game
+
     if @team.save!
       redirect_to teams_path
     else
