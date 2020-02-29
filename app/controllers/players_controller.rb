@@ -11,7 +11,4 @@ class PlayersController < ApplicationController
     end
   end
 
-  def show
-    @players = User.all
-  end
 end
