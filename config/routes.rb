@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   get 'positions', to: 'positions#all'
   post 'captain_approve', to: 'pending_applications#captain_approve'
 
-  resources :players, only: [ :show ]
+  resources :players, only: [ :index, :show ]
 
 end
