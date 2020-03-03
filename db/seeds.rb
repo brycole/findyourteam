@@ -15,20 +15,38 @@ games.each do |game|
   game.save
 end
 
+game = Game.find_by(title: "Dota2")
+dota_rank_names = ["Herald", "Guardian", "Crusader", "Archon", "Legend", "Ancient", "Divine", "Immortal"]
+dota_inner_ranking = ["I", "II", "III", "IV", "V"]
+ranking = 0
+image_file = "dota-rank"
 
+puts "Generating Dota 2 ranks..."
+for i in dota_rank_names
+  for x in dota_inner_ranking do
+    ranking = ranking + 1
+    temp_file = image_file.dup
+    temp_file << "#{ranking}.png"
+    rank = Rank.new
+    puts "Adding rank #{i} #{x}"
+    rank.name = "#{i} #{x}"
+    rank.rank_position = ranking
+    rank.image = temp_file
+    rank.game = game
+    rank.save
+    break if ranking == 38
+  end
+  break if rank == 38
+end
 
- t.string :name
-      t.integer :rank_position
-      t.string :image
-      t.references :game, foreign_key: true
 
 game = Game.find_by(title: "CS: GO")
 rank_names_csgo = ["Silver I", "Silver II", "Silver III", "Silver IV", "Silver Elite", "Silver Elite Master", "Gold Nova I", "Gold Nova II", "Gold Nova III", "Gold Nova Master", "Master Guardian I", "Master Guardian II", "Master Guardian Elite", "Distinguished Master Guardian", "Legendary Eagle", "Legendary Eagle Master", "Supreme Master First Class", "The Global Elite"]
 rank_position_csgo = [*1..18]
 image_file = "cs-rank"
 
+puts "Generating CS:GO ranks..."
 rank_position_csgo.each do |i|
-  puts "Generating CS:GO ranks..."
   temp_file = image_file.dup
   temp_file << "#{i}.png"
   rank = Rank.new
@@ -41,6 +59,7 @@ rank_position_csgo.each do |i|
   rank.game = game
   rank.save
 end
+
 
 position_names_dota2 = ["Jungler", "Carry", "Solo", "Offlaner", "Support"]
 position_names_csgo = ["Fragger", "Leader", "AWPer", "Lurker", "Playmaker", "Secondary AWPer"]
