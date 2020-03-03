@@ -80,20 +80,24 @@ end
 
 puts 'Creating users'
 
+
+
 User.create!(
   email: 'vladi@gmail.com',
   password: 'password',
   nickname: 'Destroyer',
   show_game: 'Dota2',
-  rank: 4,
+  rank: Rank.find(28),
   position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
+
+rank = rank.find(28)
 
 User.create!(
   email: 'rachid@gmail.com',
   password: 'password',
   nickname: 'Fly',
   show_game: 'CS: GO',
-  rank: 2,
+  rank: Rank.find(16),
   position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
 
 User.create!(
@@ -101,7 +105,7 @@ User.create!(
   password: 'password',
   nickname: 'Miracle',
   show_game: 'Dota2',
-  rank: 3,
+  rank: Rank.find(38),
   position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
@@ -117,7 +121,7 @@ User.create!(
   password: 'password',
   nickname: 'Resolution',
   show_game: 'Dota2',
-  rank: 5,
+  rank: Rank.find(34),
   position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
@@ -125,7 +129,7 @@ User.create!(
   password: 'password',
   nickname: 's5',
   show_game: 'Dota2',
-  rank: 6,
+  rank: Rank.find(24),
   position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
@@ -133,7 +137,7 @@ User.create!(
   password: 'password',
   nickname: 'Ceb',
   show_game: 'CS: GO',
-  rank: 7,
+  rank: Rank.find(54),
   position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
 
 User.create!(
@@ -141,7 +145,7 @@ User.create!(
   password: 'password',
   nickname: 'Topson',
   show_game: 'CS: GO',
-  rank: 8,
+  rank: Rank.find(56),
   position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
 
 User.create!(
@@ -149,7 +153,7 @@ User.create!(
   password: 'password',
   nickname: 'NBK',
   show_game: 'Dota2',
-  rank: 9,
+  rank: Rank.find(42),
   position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
@@ -157,7 +161,7 @@ User.create!(
   password: 'password',
   nickname: 'QO',
   show_game: 'CS: GO',
-  rank: 10,
+  rank: Rank.find(4),
   position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
 
 puts 'Users created'
