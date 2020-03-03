@@ -19,53 +19,102 @@ h1.home {
   color: white;
 }
 
-.select-a-game {
-  background-color: black;
-  color: white;
-  opacity: 0.7;
-  margin: auto;
-  padding: 8px;
-  font-size: 32px;
-  text-align:center;
-  width: 400px;
-  border-radius: 32px;
-  p {
-    margin: 0px;
-  }
+// CSS for the home page left-hand side
+
+.game-selector-mask {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25vw;
+  height: 100vh;
 }
 
 .all-games {
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  right: -20%;
 }
 
 .games-selector {
+  position: relative;
+  object-fit: cover;
+  opacity: 1;
   background-color: white;
-  color: white;
-  opacity: 0.6;
-  margin: 0px;
-  padding: 16px;
+  width: 300px;
   text-align: center;
   border-radius: 8px;
-  margin: 4px;
+  margin: 12px;
+  transition-duration: 0.5s;
+  right: 0px;
   &:hover {
-    opacity: 1;
-    box-shadow: 0 15px 10px #777;
+    right: -40px;
+    transition-duration: 0.5s;
   }
 }
 
+.game-selector-opaque {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to left, black, transparent 50%, transparent 75%, rgba(0,0,0,0.9) 77%);
+}
+
+#dota2 {
+  background-image: url(https://cdn.mos.cms.futurecdn.net/G2VQ2CL9j4w6Jv5z3QwjuN.jpg);
+  background-size: 400px;
+  border: 3px solid #4c57ee;
+}
+
+#csgo {
+  background-image: url(https://media.threatpost.com/wp-content/uploads/sites/103/2019/03/14151149/Counterstrike.jpg);
+  background-size: 400px;
+  border: 3px solid #966c43;
+}
+
+#overwatch {
+  background-image: url(https://specials-images.forbesimg.com/imageserve/5db6e4a3616a45000704ba97/960x0.jpg?fit=scale);
+  background-size: 400px;
+  border: 3px solid purple;
+}
+
+// CSS for the home page right hand side
+
 .select-this-game {
   display: none;
-  background-color: black;
+  padding-right: 40px;
+  width: 540px;
+  height: auto;
+  position: absolute;
+  right: 0px;
+  top: 30vh;
   color: white;
-  opacity: 0.7;
-  margin: auto;
-  padding: 8px;
-  font-size: 32px;
-  text-align:center;
-  width: 400px;
-  border-radius: 32px;
-  p {
-    margin: 0px;
+  text-shadow: 1px 1px black;
+  h1 {
+    font-family: 'Arial';
+    font-weight: bolder;
+    font-size: 32px;
   }
+  p {
+    font-weight: bolder;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border-radius: 4px;
+    padding: 8px 16px;
+    transition: 0.5s;
+    &:hover {
+      background-color: grey;
+    }
+  }
+}
+
+#findyourteam-logo {
+  position: fixed;
+  z-index: 200;
+  top: 32px;
+  left: 32px;
 }

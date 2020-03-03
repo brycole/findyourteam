@@ -35,23 +35,83 @@ puts 'Creating users'
 
 User.create!(
   email: 'vladi@gmail.com',
-  password: 'password')
+  password: 'password',
+  nickname: 'Destroyer',
+  show_game: 'Dota2',
+  rank: 4,
+  position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
   email: 'rachid@gmail.com',
-  password: 'password')
+  password: 'password',
+  nickname: 'Fly',
+  show_game: 'CS: GO',
+  rank: 2,
+  position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
 
 User.create!(
   email: 'bryan@gmail.com',
-  password: 'password')
+  password: 'password',
+  nickname: 'Miracle',
+  show_game: 'Dota2',
+  rank: 3,
+  position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
   email: 'atsede@gmail.com',
-  password: 'password')
+  password: 'password',
+  nickname: 'kill_bill',
+  show_game: 'Dota2',
+  rank: 1,
+  position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
   email: 'bob@gmail.com',
-  password: 'password')
+  password: 'password',
+  nickname: 'Resolution',
+  show_game: 'Dota2',
+  rank: 5,
+  position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
+
+User.create!(
+  email: 'sarah@gmail.com',
+  password: 'password',
+  nickname: 's5',
+  show_game: 'Dota2',
+  rank: 6,
+  position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
+
+User.create!(
+  email: 'scott@gmail.com',
+  password: 'password',
+  nickname: 'Ceb',
+  show_game: 'CS: GO',
+  rank: 7,
+  position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
+
+User.create!(
+  email: 'finn@gmail.com',
+  password: 'password',
+  nickname: 'Topson',
+  show_game: 'CS: GO',
+  rank: 8,
+  position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
+
+User.create!(
+  email: 'beyonce@gmail.com',
+  password: 'password',
+  nickname: 'NBK',
+  show_game: 'Dota2',
+  rank: 9,
+  position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
+
+User.create!(
+  email: 'tupac@gmail.com',
+  password: 'password',
+  nickname: 'QO',
+  show_game: 'CS: GO',
+  rank: 10,
+  position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
 
 puts 'Users created'
 

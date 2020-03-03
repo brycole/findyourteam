@@ -2,12 +2,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    lol = "lol_group_battle.mp4"
+    lol = "overwatch2.mp4"
     dota2 = "dota2_blackhole.mp4"
     cs = "HatefulHauntingAngora.webm"
 
-    @video = dota2
-    @video2 = lol
+    @video = cs
 
     if current_user.try(:show_game) == "lol"
       @video = lol
