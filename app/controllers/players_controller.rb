@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
   def show
-    @player = current_user
+    @player = User.find(params[:id])
   end
 end
