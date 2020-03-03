@@ -1,4 +1,28 @@
-<% User do |user| %>
-<%= user.email %>
+<td>
+  <div class="row justify-content-center">
+  <% if @player.photo.attached? %>
+    <%= cl_image_tag @player.photo.key, height: 100, width: 100, crop: :fill %>
+    <% else %>
+    <%= image_tag "avatar_logo.jpg" , height: 100, width: 100, crop: :fill %>
+  <% end %>
+  </div>
+</td>
 <br>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-4 col-sm-offset-3">
+      <h3>My Profile</h3>
+       <h3> <%= @player.nickname %></h3>
+       <h3> <%= @player.email %></h3>
+       <h3> <%= @player.rank %></h3>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <%= link_to "Back to Players", players_path, class: "btn btn-outline-primary" %>
+  <br>
+  <br>
+  <%= link_to "edit", edit_user_registration_path, class: "btn btn-outline-primary" %>
+</div>

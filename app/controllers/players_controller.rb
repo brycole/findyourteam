@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+  def show
+    @player = User.find(params[:id])
 
   def index
     # @players = User.all
