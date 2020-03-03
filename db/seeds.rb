@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+rank = Rank.find_by(id: 4)
+puts rank.name
+exit
 
 games = [{ title: "Dota2", genre: "MOBA" },
          { title: "CS: GO", genre: "FPS" },

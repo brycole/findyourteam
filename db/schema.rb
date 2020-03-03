@@ -103,12 +103,13 @@ ActiveRecord::Schema.define(version: 2020_02_29_154414) do
     t.datetime "updated_at", null: false
     t.string "nickname"
     t.string "show_game"
-    t.integer "rank"
+    t.bigint "rank_id"
     t.bigint "game_id"
     t.bigint "position_name_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["game_id"], name: "index_users_on_game_id"
     t.index ["position_name_id"], name: "index_users_on_position_name_id"
+    t.index ["rank_id"], name: "index_users_on_rank_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

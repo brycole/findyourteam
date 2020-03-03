@@ -1,5 +1,5 @@
 class AddRankToUsers < ActiveRecord::Migration[5.2]
   def change
-    add_column :users, :rank, :integer
+    add_reference :users, :rank
   end
 end

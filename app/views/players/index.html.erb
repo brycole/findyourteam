@@ -30,7 +30,7 @@
       <% @players.each do |player| %>
         <tr>
           <td><%= link_to player.email.split('@').first.capitalize %></td>
-          <td><%= player.rank %></td>
+          <td><%= player.rank.name %></td>
           <td><%= player.show_game %></td>
           <td><%= player.position_name_id %></td>
           <td><%= player.nickname %></td>
