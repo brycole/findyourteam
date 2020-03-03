@@ -14,7 +14,7 @@ games.each do |game|
   game.save
 end
 
-dota = Game.find_by(title: "dota2")
+dota2 = Game.find_by(title: "Dota2")
 csgo = Game.find_by(title: "CS: GO")
 
 dota_rank_names = ["Herald", "Guardian", "Crusader", "Archon", "Legend", "Ancient", "Divine", "Immortal"]
@@ -33,7 +33,7 @@ for i in dota_rank_names
     rank.name = "#{i} #{x}"
     rank.rank_position = ranking
     rank.image = temp_file
-    rank.game = dota
+    rank.game = dota2
     rank.save
     break if ranking == 38
   end
@@ -159,7 +159,7 @@ User.create!(
   nickname: 'NBK',
   show_game: dota2,
   game: dota2,
-  rank: Rank.find_by(id: 42),
+  rank: Rank.find_by(id: 4),
   position_name_id: dota2.position_names.first.id)
 
 User.create!(
@@ -168,7 +168,7 @@ User.create!(
   nickname: 'QO',
   show_game: csgo,
   game: csgo,
-  rank: Rank.find_by(id: 4),
+  rank: Rank.find_by(id: 42),
   position_name_id: csgo.position_names.first.id)
 
 puts 'Users created'
