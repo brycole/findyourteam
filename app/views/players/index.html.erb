@@ -1,4 +1,43 @@
-<% User.all.each do |user| %>
-<%= user.email %>
-<br>
-<% end %>
+<div>
+  <h2>Index of Players</h2>
+
+  <%= form_tag players_path, method: :get do %>
+    <div class="search-form-control form-group">
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a player",
+        autocomplete: "off"
+      %>
+      <%= submit_tag "Search", class: "btn btn-outline-dark" %>
+      </button>
+    </div>
+  <% end %>
+
+  <table class="table table-dark table-hover table-borderless table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Rank</th>
+        <th scope="col">Game</th>
+        <th scope="col">Position</th>
+        <th scope="col">Nickname</th>
+        <th scope="col">Capitain's Pick</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @players.each do |player| %>
+        <tr>
+          <td><%= link_to player.email.split('@').first.capitalize %></td>
+          <td><%= player.rank %></td>
+          <td><%= player.show_game %></td>
+          <td><%= player.position_name_id %></td>
+          <td><%= player.nickname %></td>
+          <td><%= submit_tag "Invite", class: "btn btn-light" %></td>
+          <td><%= image_tag src='https://kitt.lewagon.com/placeholder/users/marcoranieri', class: "avatar" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

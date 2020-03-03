@@ -14,8 +14,12 @@ Rails.application.routes.draw do
   get 'positions', to: 'positions#all'
   post 'captain_approve', to: 'pending_applications#captain_approve'
 
+<<<<<<< HEAD
   get 'ranks', to: 'players#ranks'
 
   resources :players, only: [ :show ]
+=======
+  resources :players, only: [ :index, :show ]
+>>>>>>> master
 
 end
