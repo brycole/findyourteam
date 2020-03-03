@@ -2,15 +2,11 @@
 <div class="container">
 
   <% @ranks.each do |rank| %>
-    <div class="row">
-      <div class="col-sm-3">
-        <% if rank.game == "Dota2" %>
-          <div> <%= image_tag rank.image, height: 100, width: 100, crop: :fill %> </div>
-        <% else %>
-            <div> <%= image_tag rank.image, height: 50, width: 100, crop: :fill %> </div>
-        <% end %>
-        <div> <%= rank.name %> </div>
-      </div>
-    </div>
+    <% if rank.game == "Dota2" %>
+      <div> <%= image_tag rank.image, height: 100, width: 100, crop: :fill %> </div>
+    <% else %>
+        <div> <%= image_tag rank.image, height: 50, width: 100, crop: :fill %> </div>
+    <% end %>
+    <div> <%= rank.name %> </div>
   <% end %>
 </div>
