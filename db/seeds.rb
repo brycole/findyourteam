@@ -80,24 +80,22 @@ end
 
 puts 'Creating users'
 
-
-
 User.create!(
   email: 'vladi@gmail.com',
   password: 'password',
   nickname: 'Destroyer',
   show_game: 'Dota2',
-  rank: Rank.find(28),
+  rank: Rank.find_by(id: 28),
   position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
-rank = rank.find(28)
+rank = Rank.find_by(id: 28)
 
 User.create!(
   email: 'rachid@gmail.com',
   password: 'password',
   nickname: 'Fly',
   show_game: 'CS: GO',
-  rank: Rank.find(16),
+  rank: Rank.find_by(id: 16),
   position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
 
 User.create!(
@@ -105,7 +103,7 @@ User.create!(
   password: 'password',
   nickname: 'Miracle',
   show_game: 'Dota2',
-  rank: Rank.find(38),
+  rank: Rank.find_by(id: 38),
   position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
@@ -113,7 +111,7 @@ User.create!(
   password: 'password',
   nickname: 'kill_bill',
   show_game: 'Dota2',
-  rank: 1,
+  rank: Rank.find_by(id: 12),
   position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
@@ -121,7 +119,7 @@ User.create!(
   password: 'password',
   nickname: 'Resolution',
   show_game: 'Dota2',
-  rank: Rank.find(34),
+  rank: Rank.find_by(id: 34),
   position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
@@ -129,7 +127,7 @@ User.create!(
   password: 'password',
   nickname: 's5',
   show_game: 'Dota2',
-  rank: Rank.find(24),
+  rank: Rank.find_by(id: 24),
   position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
@@ -137,7 +135,7 @@ User.create!(
   password: 'password',
   nickname: 'Ceb',
   show_game: 'CS: GO',
-  rank: Rank.find(54),
+  rank: Rank.find_by(id: 54),
   position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
 
 User.create!(
@@ -145,7 +143,7 @@ User.create!(
   password: 'password',
   nickname: 'Topson',
   show_game: 'CS: GO',
-  rank: Rank.find(56),
+  rank: Rank.find_by(id: 56),
   position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
 
 User.create!(
@@ -153,7 +151,7 @@ User.create!(
   password: 'password',
   nickname: 'NBK',
   show_game: 'Dota2',
-  rank: Rank.find(42),
+  rank: Rank.find_by(id: 42),
   position_name_id: Game.find_by(title: "Dota2").position_names.first.id)
 
 User.create!(
@@ -161,7 +159,7 @@ User.create!(
   password: 'password',
   nickname: 'QO',
   show_game: 'CS: GO',
-  rank: Rank.find(4),
+  rank: Rank.find_by(id: 4),
   position_name_id: Game.find_by(title: "CS: GO").position_names.first.id)
 
 puts 'Users created'
