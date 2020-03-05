@@ -9,5 +9,6 @@ class User < ApplicationRecord
   belongs_to :position_name, optional: true
 
   belongs_to :game, optional: true
+  belongs_to :rank, optional: true
   has_one_attached :photo
 end

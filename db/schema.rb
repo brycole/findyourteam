@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_29_154414) do
+ActiveRecord::Schema.define(version: 2020_03_03_223943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 2020_02_29_154414) do
     t.index ["user_id"], name: "index_positions_on_user_id"
   end
 
+  create_table "ranks", force: :cascade do |t|
+    t.string "name"
+    t.integer "rank_position"
+    t.string "image"
+    t.bigint "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_ranks_on_game_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.bigint "game_id"
     t.bigint "user_id"
@@ -93,12 +103,13 @@ ActiveRecord::Schema.define(version: 2020_02_29_154414) do
     t.datetime "updated_at", null: false
     t.string "nickname"
     t.string "show_game"
-    t.integer "rank"
     t.bigint "game_id"
     t.bigint "position_name_id"
+    t.bigint "rank_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["game_id"], name: "index_users_on_game_id"
     t.index ["position_name_id"], name: "index_users_on_position_name_id"
+    t.index ["rank_id"], name: "index_users_on_rank_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -109,8 +120,10 @@ ActiveRecord::Schema.define(version: 2020_02_29_154414) do
   add_foreign_key "positions", "position_names"
   add_foreign_key "positions", "teams"
   add_foreign_key "positions", "users"
+  add_foreign_key "ranks", "games"
   add_foreign_key "teams", "games"
   add_foreign_key "teams", "users"
   add_foreign_key "users", "games"
   add_foreign_key "users", "position_names"
+  add_foreign_key "users", "ranks"
 end

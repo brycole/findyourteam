@@ -1,0 +1,14 @@
+
+<div class="container">
+
+  <% @ranks.each do |rank| %>
+    <% if rank.game.id == 1 %>
+      <div> <%= image_tag rank.image, height: 100, width: 100, crop: :fill %> </div>
+    <% else %>
+      <div> <%= image_tag rank.image, height: 50, width: 100, crop: :fill %> </div>
+    <% end %>
+    <div> <%= rank.name %> </div>
+    <div> <%= rank.rank_position %> </div>
+    <div> ID:<%= rank.id %> </div>
+  <% end %>
+</div>
