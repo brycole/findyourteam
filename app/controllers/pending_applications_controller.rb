@@ -1,7 +1,6 @@
 class PendingApplicationsController < ApplicationController
   before_action :set_application, only: %i[show destroy captain_approve]
 
-
   def index
     @team = Team.find(params[:team_id])
     @is_captain = captain?(@team)
@@ -59,10 +58,34 @@ class PendingApplicationsController < ApplicationController
     @pending_application.destroy
   end
 
+  def create_invitation
+    # Currently only works if you select everything correctly
+    @player = User.find(params[:player])
+    @captain = current_user
+    @team = @captain.teams.where(game_id: params[:game_id]).first
+    @position = @team.positions.where(position_name_id: params[:position]).first
+    # Bryan's code from here onwards
+    @pending_application = PendingApplication.new
+    @pending_application.user = @player
+    @pending_application.position = @position
+    if @pending_application.position.team.captain?(current_user)
+      @pending_application.owner_approval = true
+      @pending_application.user_approval = true
+    else
+      @pending_application.user_approval = true
+    end
+
+    if @pending_application.save
+      fill_position
+      redirect_to team_positions_path(@position.team)
+    else
+      redirect_to team_positions_path(@position.team)
+    end
+  end
+
   private
 
   def set_application
     @pending_application = PendingApplication.find(params[:id])
   end
-
 end

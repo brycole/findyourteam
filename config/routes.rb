@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'ranks', to: 'players#ranks'
 
+  get 'create_invitation', to: 'pending_applications#create_invitation'
+
   resources :players, only: [ :index, :show ]
 
 end

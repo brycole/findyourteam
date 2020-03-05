@@ -42,7 +42,11 @@
           <td><%= player.game.title %></td>
           <td><%= player.position_name.name %></td>
           <td><%= player.nickname %></td>
-          <td><%= submit_tag "Invite", class: "btn btn-light" %></td>
+          <td><%= link_to "Invite player", controller: "pending_applications",
+                                            action: "create_invitation",
+                                            player: player.id,
+                                            game_id: player.game,
+                                            position: player.position_name %></td>
           <td><%= image_tag src='https://kitt.lewagon.com/placeholder/users/marcoranieri', class: "avatar" %></td>
         </tr>
       <% end %>
