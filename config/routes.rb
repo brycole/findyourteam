@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   post "/set_user_team", to: "teams#set_user_team", as: :set_user_team
+  post "/set_user_game", to: "pages#set_user_game", as: :set_user_game
   resources :games, only: [ :index, :show ] do
   end
 
