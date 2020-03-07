@@ -1,6 +1,5 @@
 <div>
   <h2>Index of Players</h2>
-
   <%= form_tag players_path, method: :get do %>
     <div class="search-form-control form-group">
       <%= text_field_tag :query,
@@ -9,50 +8,39 @@
         placeholder: "Find a player",
         autocomplete: "off"
       %>
+      <br>
       <%= submit_tag "Search", class: "btn btn-outline-dark" %>
       </button>
     </div>
   <% end %>
-
-  <table class="table table-dark table-hover table-borderless table-sm">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Rank</th>
-        <th scope="col"></th>
-        <th scope="col">Game</th>
-        <th scope="col">Position</th>
-        <th scope="col">Nickname</th>
-        <th scope="col">Capitain's Pick</th>
-        <th scope="col">Image</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @players.each do |player| %>
-        <tr>
-          <td><%= link_to player_path(player.id) do %>
-              <p><%= player.email.split('@').first.capitalize %></p>
-              <% end %>
-          </td>
-          <td>
-            <% if player.rank.game.id == 1 %>
-              <div> <%= image_tag player.rank.image, height: 50, width: 50, crop: :fill %> </div>
-            <% else %>
-              <div> <%= image_tag player.rank.image, height: 25, width: 50, crop: :fill %> </div>
-            <% end %>
-          </td>
-          <td><%= player.rank.name %></td>
-          <td><%= player.game.title %></td>
-          <td><%= player.position_name.name %></td>
-          <td><%= player.nickname %></td>
-          <td><%= link_to "Invite player", controller: "pending_applications",
-                                            action: "create_invitation",
-                                            player: player.id,
-                                            game_id: player.game,
-                                            position: player.position_name %></td>
-          <td><%= image_tag src='https://kitt.lewagon.com/placeholder/users/marcoranieri', class: "avatar" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>
+<div class="cards-main-player" style="background-image: url(https://media.threatpost.com/wp-content/uploads/sites/103/2019/03/14151149/Counterstrike.jpg)">
+  <div class="cards-player" >
+      <% @players.each do|player| %>
+        <!-- <div class="card" > -->
+          <div class="card-wrapper-player">
+            <div>
+             <!--  <% if player.photo.attached? %>
+                <%= cl_image_tag player.photo.key, class: "avatar-square-player" %>
+              <% else %> -->
+                <%= image_tag player.rank.image, size: "120x120",class: "avatar-square-player" %>
+            <!-- <% end %> -->
+            </div>
+            <div class="card-position">
+              <div>Position => <%= player.position_name.name %></div>
+              <div>Nickname => <%= player.nickname %></div>
+              <div><td>Capitain's Pick => <%= submit_tag "Invite", class: "btn btn-light" %></td></div>
+          </div>
+        </div>
+    <!-- </div> -->
+      <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+

@@ -6,6 +6,70 @@
   margin-left: 10px;
 }
 
+.card-wrapper-player{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-style: solid;
+  background-color: #ffffff;
+
+  display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  width: 400px;
+}
+
+.avatar-square-player {
+  width:110px;
+}
+.card-position-player{
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.cards-player {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+  padding: 5px;
+}
+
+.cards-main-player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// .card {
+//   background-size: cover;
+//   background-position: center;
+//   height: 120px;
+//   width: 350px;
+//   // border-radius: 8px;
+//   box-shadow: 0 4px 6px hsla(0,0,0%,.1);
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-around;
+//   //font-size: 18px;
+//   color: #343a40;
+//   font-weight: bolder;
+//   //text-shadow: 0 0 2px rgba(0,0,0,0.3);
+//   transition: transform .3s;
+// }
+
+// .card-wrapper{
+//   margin-top: 10px;
+//   margin-bottom: 10px;
+//   justify-content: space-between;
+
+//   //border-style: solid;
+//   display: flex;
+//   align-items: center;
+//   width: 400px;
+// }
+
+=======
+
 .card-wrapper{
   margin-top: 10px;
   margin-bottom: 10px;
