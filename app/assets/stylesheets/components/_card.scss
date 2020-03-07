@@ -36,7 +36,7 @@
 .card-position{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   margin-left: 10px;
 }
@@ -78,6 +78,25 @@
   transition: transform .3s;
 }
 
+
+.cards-dota2 {
+  @extend .cards;
+  color: $dota2-color;
+  font-family: $dota2-font;
+}
+
+.cards-csgo {
+  @extend .cards;
+  color: $csgo-color;
+  font-family: $csgo-font;
+}
+
+.cards-overwatch {
+  @extend .cards;
+  color: $overwatch-color;
+  font-family: $overwatch-font;
+}
+
 .card:hover {
   transform: scale(1.02);
   // background: #b2b3b3;
@@ -91,6 +110,24 @@
 .container-show {
   align-items: center;
   justify-content: center;
+}
+
+.container-show-dota2 {
+  @extend .container-show;
+  color: $dota2-color !important;
+  font-family: $dota2-font !important;
+}
+
+.container-show-csgo {
+  @extend .container-show;
+  color: $csgo-color !important;
+  font-family: $csgo-font !important;
+}
+
+.container-show-overwatch {
+  @extend .container-show;
+  color: $overwatch-color !important;
+  font-family: $overwatch-font !important;
 }
 
 .card-show {
@@ -114,4 +151,6 @@ img.avatar-large {
 
 .application-links {
   margin-left: 50px;
+  position: absolute;
+  left: 10px;
 }
