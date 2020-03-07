@@ -97,7 +97,7 @@ User.create!(
   show_game: csgo,
   game: dota2,
   rank: Rank.find_by(id: 16),
-  position_name_id: csgo.position_names.first.id)
+  position_name_id: dota2.position_names.first.id)
 
 User.create!(
   email: 'bryan@gmail.com',
@@ -133,7 +133,7 @@ User.create!(
   show_game: dota2,
   game: csgo,
   rank: Rank.find_by(id: 24),
-  position_name_id: dota2.position_names.first.id)
+  position_name_id: csgo.position_names.first.id)
 
 User.create!(
   email: 'scott@gmail.com',
