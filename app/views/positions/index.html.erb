@@ -1,19 +1,10 @@
-<h1>Positions for <%= @team.name %></h1>
-
-<% if @team.captain?(current_user) %>
-  <h4> <%= link_to "Create a new position", new_team_position_path(@team.id) %> </h4>
-  <h4> <%= link_to "Approve applications", team_pending_applications_path(@team) %> </h4>
-<% else %>
-  <%#= link_to "Show applications", team_pending_applications_path(@team) %>
-<% end %>
-
-<ol>
+<!-- <ol>
   <% @positions.each do |position| %>
     <li>
       <p><%= position.position_name.name %>
       <% if position.user.nil? %>
         <% if @applied.include?(position.id) %>
-          <strong> ALREADY APPLIED</strong>
+          <strong>ALREADY APPLIED</strong>
         <% else %>
           <strong> <%= link_to 'APPLY', team_pending_applications_path(@team, position_id:position.id), method: :post %> </strong>
         <% end %>
@@ -32,6 +23,78 @@
         <% end %>
     </li>
   <% end %>
-</ol>
+</ol> -->
 
-<%= link_to "Back to teams (this needs changing, when team show is implemented)", teams_path %>
+
+
+<h1 style="justify-content: center;">Positions for <%= @team.name %></h1>
+<div class="container-show">
+  <div class="application-links">
+    <% if @team.captain?(current_user) %>
+    <h4> <%= link_to "Create a new position", new_team_position_path(@team.id), class: "btn btn-outline-dark" %> </h4>
+    <h4> <%= link_to "Approve applications", team_pending_applications_path(@team), class: "btn btn-outline-dark" %> </h4>
+    <h4> <%= link_to "Browse players", players_path, class: "btn btn-outline-dark" %></h4>
+  <% else %>
+    <%#= link_to "Show applications", team_pending_applications_path(@team) %>
+  <% end %>
+  </div>
+  <div class="card-show" style="width: 30rem;">
+    <img src="https://i.pinimg.com/originals/62/71/df/6271df0313418f138a64b8e2634812ad.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Team Name</h5>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+    </div>
+  </div>
+</div>
+
+<!-- <ul style="list-style: none;"> -->
+<div class="cards">
+    <% @positions.each do |position| %>
+      <!-- <div class="card card-product"> -->
+      <!--   <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-infos">
+            <h2>Product name</h2>
+            <p>Product description with <strong>relevant info</strong> only.</p>
+          </div>
+        </div> -->
+        <div class="card-wrapper">
+          <div>
+           <%= image_tag "https://kitt.lewagon.com/placeholder/users/krokrob", class: "avatar-card-position", alt: "avatar-square" %>
+          </div>
+
+          <div class="card-position">
+            <!-- <li> -->
+              <p><%= position.position_name.name %>
+              <% if position.user.nil? %>
+                <% if @applied.include?(position.id) %>
+                  <strong> ALREADY APPLIED</strong>
+                <% else %>
+                  <strong> <%= link_to 'APPLY', team_pending_applications_path(@team, position_id:position.id), method: :post %> </strong>
+                <% end %>
+              </p>
+                <p>Position still empty </p>
+              <% else %>
+                <p><%= position.user.email %></p>
+                <% if @team.captain?(current_user) %>
+                  <%= link_to 'Remove Player', team_position_path(@team, id:position.id), method: :put %>
+                <% end %>
+              <% end %>
+                <% if @team.captain?(current_user) %>
+                  <p><%= link_to "Delete position", team_position_path(@team.id, position.id),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></p>
+                <% end %>
+            <!-- </li> -->
+          </div>
+        </div>
+      <!-- </div> -->
+    <% end %>
+</div>
+  <!-- </ul> -->
+
+<%= link_to "Back to teams", teams_path %>
