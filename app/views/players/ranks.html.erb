@@ -2,7 +2,15 @@
 <div class="container">
   <div class="rank-card">
     <% @ranks.each do |rank| %>
-    <div class="rank-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
+    <div class=
+     <% if current_user.show_game == '1' %>
+      'rank-card-category-dota2'
+      <% elsif current_user.show_game == '2' %>
+      'rank-card-category-csgo'
+      <% else %>
+      'rank-card-category-overwatch'
+      <% end %>
+     style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
       <% if rank.game.id == 1 %>
         <div> <%= image_tag rank.image, height: 100, width: 100, crop: :fill %> </div>
       <% else %>

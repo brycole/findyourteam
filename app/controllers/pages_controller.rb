@@ -15,4 +15,12 @@ class PagesController < ApplicationController
     # <video autoplay="autoplay" loop="loop" muted="muted" src="<%= @video %>"></video>
     # <%= video_tag "dota2_blackhole.mp4" %>
   end
+
+  def set_user_game
+    current_user.show_game = params[:game]
+    current_user.save
+    redirect_to request.referrer
+  end
+
+  #  <% 'dota2-theme' if current_user.show_game ="1" %>
 end

@@ -9,19 +9,21 @@
     <% end %>
   <% end %>
 
+  <div class="dota2-nav-image" id="">
+    <p><%= link_to "Dota 2", set_user_game_path(game: Game.find_by(title: "Dota2").id), method: :post %></p>
+  </div>
+  <div class="csgo-nav-image" id="cs">
+    <p><%= link_to "CS: GO", set_user_game_path(game: Game.find_by(title: "CS: GO").id), method: :post %></p>
+  </div>
+  <div class="overwatch-nav-image" id="">
+    <p><%= link_to "Overwatch", set_user_game_path(game: Game.find_by(title: "Overwatch").id), method: :post %></p>
+  </div>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="" id="">
-    <p><%= link_to "Dota 2", set_user_game_path(game: Game.find_by(title: "Dota2").id), method: :post %></p>
-  </div>
-  <div class="" id="cs">
-    <p><%= link_to "CS: GO", set_user_game_path(game: Game.find_by(title: "CS: GO").id), method: :post %></p>
-  </div>
-  <div class="" id="">
-    <p><%= link_to "Overwatch", set_user_game_path(game: Game.find_by(title: "Overwatch").id), method: :post %></p>
-  </div>
+
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
