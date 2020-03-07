@@ -3,6 +3,7 @@
 <% if @team.captain?(current_user) %>
   <h4> <%= link_to "Create a new position", new_team_position_path(@team.id) %> </h4>
   <h4> <%= link_to "Approve applications", team_pending_applications_path(@team) %> </h4>
+  <h4> <%= link_to "Browse players", players_path%></h4>
 <% else %>
   <%#= link_to "Show applications", team_pending_applications_path(@team) %>
 <% end %>
@@ -13,7 +14,7 @@
       <p><%= position.position_name.name %>
       <% if position.user.nil? %>
         <% if @applied.include?(position.id) %>
-          <strong> ALREADY APPLIED</strong>
+          <strong>ALREADY APPLIED</strong>
         <% else %>
           <strong> <%= link_to 'APPLY', team_pending_applications_path(@team, position_id:position.id), method: :post %> </strong>
         <% end %>
@@ -34,4 +35,4 @@
   <% end %>
 </ol>
 
-<%= link_to "Back to teams (this needs changing, when team show is implemented)", teams_path %>
+<%= link_to "Back to teams", teams_path %>

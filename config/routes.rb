@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'positions', to: 'positions#all'
   post 'captain_approve', to: 'pending_applications#captain_approve'
-
+  post 'player_approve', to: 'pending_applications#player_approve'
 
   get 'ranks', to: 'players#ranks'
 

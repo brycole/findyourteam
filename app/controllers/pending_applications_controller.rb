@@ -1,5 +1,5 @@
 class PendingApplicationsController < ApplicationController
-  before_action :set_application, only: %i[show destroy captain_approve]
+  before_action :set_application, only: %i[show destroy captain_approve player_approve]
 
   def index
     @team = Team.find(params[:team_id])
@@ -14,6 +14,16 @@ class PendingApplicationsController < ApplicationController
   def captain_approve
     team = Team.find(params[:team_id])
     @pending_application.owner_approval = true
+    @pending_application.save
+
+    fill_position
+    redirect_to team_positions_path(team)
+  end
+
+  def player_approve
+    team_id = @pending_application.position.team.id
+    team = Team.find(team_id)
+    @pending_application.user_approval = true
     @pending_application.save
 
     fill_position
@@ -68,13 +78,7 @@ class PendingApplicationsController < ApplicationController
     @pending_application = PendingApplication.new
     @pending_application.user = @player
     @pending_application.position = @position
-    if @pending_application.position.team.captain?(current_user)
-      @pending_application.owner_approval = true
-      @pending_application.user_approval = true
-    else
-      @pending_application.user_approval = true
-    end
-
+    @pending_application.owner_approval = true
     if @pending_application.save
       fill_position
       redirect_to team_positions_path(@position.team)

@@ -30,7 +30,10 @@
     <tbody>
       <% @players.each do |player| %>
         <tr>
-          <td><%= link_to player.email.split('@').first.capitalize %></td>
+          <td><%= link_to player_path(player.id) do %>
+              <p><%= player.email.split('@').first.capitalize %></p>
+              <% end %>
+          </td>
           <td>
             <% if player.rank.game.id == 1 %>
               <div> <%= image_tag player.rank.image, height: 50, width: 50, crop: :fill %> </div>
