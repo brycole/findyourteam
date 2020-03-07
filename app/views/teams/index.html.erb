@@ -1,26 +1,14 @@
 
-<div>
-  <h2>Teams for <%= current_user.show_game %></h2>
-  <table class="table table-dark table-hover table-borderless table-sm">
-    <thead>
-      <tr>
-        <th scope="col">Team Name</th>
-        <th scope="col">Game Title</th>
-        <th scope="col">User</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @teams.each do |team| %>
-        <tr>
-          <td><%= link_to team.name, team_positions_path(team) %></td>
-          <td><%= team.game.title %></td>
-          <td><%= team.user.email.split('@').first.capitalize %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= link_to 'Create Team', new_team_path, class: "btn btn-outline-dark" %>
+<h2>Teams for <%= current_user.show_game %></h2>
+<div class="cards" style="background-image: url(https://media.threatpost.com/wp-content/uploads/sites/103/2019/03/14151149/Counterstrike.jpg)">
+
+  <% @teams.each do|team| %>
+  <!-- <a href="<%= team_positions_path(team) %>"> --></a>
+  <div class="card" >
+    <h4>Team: <%= link_to team.name, team_positions_path(team) %></h4>
+    <h5>Playing: <%= team.game.title %></h5>
+    <h5>Captained by: <%= team.user.email.split('@').first.capitalize %></h5>
+  </div>
+  <% end %>
 </div>
-
-
-
+<%= link_to 'Create Team', new_team_path, class: "btn btn-outline-dark btn-padding" %>
