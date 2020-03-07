@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
   def show
     @player = User.find(params[:id])
+    @pending_invitations = PendingApplication.where(user_id: @player.id)
   end
 
   def index
