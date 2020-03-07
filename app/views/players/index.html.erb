@@ -13,7 +13,7 @@
       </button>
     </div>
   <% end %>
-
+</div>
 <div class="cards-main-player" style="background-image: url(https://media.threatpost.com/wp-content/uploads/sites/103/2019/03/14151149/Counterstrike.jpg)">
   <div class="cards-player" >
       <% @players.each do|player| %>
@@ -26,7 +26,7 @@
                 <%= image_tag player.rank.image, size: "120x120",class: "avatar-square-player" %>
             <!-- <% end %> -->
             </div>
-            <div class="card-position-player">
+            <div class="card-position">
               <div>Position => <%= player.position_name.name %></div>
               <div>Nickname => <%= player.nickname %></div>
               <div><td>Capitain's Pick => <%= submit_tag "Invite", class: "btn btn-light" %></td></div>

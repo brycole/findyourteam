@@ -8,7 +8,7 @@
 
 games = [{ title: "Dota2", genre: "MOBA" },
          { title: "CS: GO", genre: "FPS" },
-         { title: "League of Legends", genre: "MOBA" }]
+         { title: "Overwatch", genre: "FPS" }]
 games.each do |game|
   game = Game.new(game)
   game.save

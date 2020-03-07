@@ -1,8 +1,10 @@
 // Graphical variables
-// move config/colors using if statement on html page
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "config/csgo-theme";
+@import "config/dota2-theme";
+@import "config/overwatch-theme";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
