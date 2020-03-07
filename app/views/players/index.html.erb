@@ -30,7 +30,10 @@
     <tbody>
       <% @players.each do |player| %>
         <tr>
-          <td><%= link_to player.email.split('@').first.capitalize %></td>
+          <td><%= link_to player_path(player.id) do %>
+              <p><%= player.email.split('@').first.capitalize %></p>
+              <% end %>
+          </td>
           <td>
             <% if player.rank.game.id == 1 %>
               <div> <%= image_tag player.rank.image, height: 50, width: 50, crop: :fill %> </div>
@@ -42,7 +45,11 @@
           <td><%= player.game.title %></td>
           <td><%= player.position_name.name %></td>
           <td><%= player.nickname %></td>
-          <td><%= submit_tag "Invite", class: "btn btn-light" %></td>
+          <td><%= link_to "Invite player", controller: "pending_applications",
+                                            action: "create_invitation",
+                                            player: player.id,
+                                            game_id: player.game,
+                                            position: player.position_name %></td>
           <td><%= image_tag src='https://kitt.lewagon.com/placeholder/users/marcoranieri', class: "avatar" %></td>
         </tr>
       <% end %>
