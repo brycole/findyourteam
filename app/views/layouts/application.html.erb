@@ -13,10 +13,12 @@
     <% if action_name == 'home' %>
       <%= yield %>
     <% else %>
-      <%= render 'shared/navbar' %>
-      <%= render 'shared/flashes' %>
-      <%= yield %>
-    <% end %>
+    <div class="tinted-image">
+        <%= render 'shared/navbar' %>
+        <%= render 'shared/flashes' %>
+        <%= yield %>
+      <% end %>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
