@@ -114,3 +114,27 @@
   <!-- </ul> -->
 
 <%= link_to "Back to teams", teams_path %>
+
+<div class="chat">
+  <%= link_to "Create a chat room", new_team_room_path(@team.id) %>
+  <%= link_to "Browse chat rooms", team_rooms_path(@team.id) %>
+</div>
+
+<% if @rooms.present? %>
+
+  <nav class="nav flex-column">
+    <ol>
+    <% @rooms.each do |room| %>
+      <li><%= link_to room.name, team_room_path(@team, room), class: "nav-link room-nav-link" %>
+       <%= link_to "Delete room", team_room_path(@team.id, room.id),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %></li>
+    <% end %>
+    </ol>
+  </nav>
+
+<% else %>
+  <div class="text-muted">
+    The are no rooms
+  </div>
+<% end %>

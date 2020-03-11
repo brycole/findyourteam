@@ -2,6 +2,7 @@
   belongs_to :game
   belongs_to :user
   has_many :positions
+  has_many :rooms
 
   has_many :pending_applications, through: :positions
 
