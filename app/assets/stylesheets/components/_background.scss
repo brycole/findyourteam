@@ -1,8 +1,25 @@
-.tinted-image {
+.tinted-image-dota2 {
   background:
     linear-gradient(
-      rgba(4, 5, 45, 0.8),
-      rgba(4, 5, 45, 0.8)
+      rgba(4, 5, 45, 0.9),
+      rgba(4, 5, 45, 0.9)
     ),
-    url(dota2_background.png);
+    url(asset_path("dota2_background.png"));
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.tinted-image-cs {
+  background:
+    linear-gradient(
+      rgba(85, 42, 3, 0.9),
+      rgba(85, 42, 3, 0.9)
+    ),
+    url(asset_path("cs_background.jpg"));
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: auto;
 }
