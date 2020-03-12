@@ -3,6 +3,7 @@ class PositionsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+    @rooms = Room.where(team_id: @team.id)
     @positions = Position.where(team_id: @team).order(id: :desc)
     @applied = []
 

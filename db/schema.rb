@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_223943) do
+ActiveRecord::Schema.define(version: 2020_03_11_164927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,25 @@ ActiveRecord::Schema.define(version: 2020_03_03_223943) do
     t.index ["game_id"], name: "index_ranks_on_game_id"
   end
 
+  create_table "room_messages", force: :cascade do |t|
+    t.bigint "room_id"
+    t.bigint "user_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_messages_on_room_id"
+    t.index ["user_id"], name: "index_room_messages_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "team_id"
+    t.index ["name"], name: "index_rooms_on_name", unique: true
+    t.index ["team_id"], name: "index_rooms_on_team_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.bigint "game_id"
     t.bigint "user_id"
@@ -121,6 +140,9 @@ ActiveRecord::Schema.define(version: 2020_03_03_223943) do
   add_foreign_key "positions", "teams"
   add_foreign_key "positions", "users"
   add_foreign_key "ranks", "games"
+  add_foreign_key "room_messages", "rooms"
+  add_foreign_key "room_messages", "users"
+  add_foreign_key "rooms", "teams"
   add_foreign_key "teams", "games"
   add_foreign_key "teams", "users"
   add_foreign_key "users", "games"
