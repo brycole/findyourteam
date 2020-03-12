@@ -3,13 +3,10 @@ class RoomsController < ApplicationController
   # @rooms = all rooms
   # @room = current room when applicable
   before_action :load_entities
-  def index
-    @team = Team.find(params[:team_id])
-    @rooms = Room.where(team_id: @team.id)
-  end
 
   def show
-    @room_message = RoomMessage.new room: @room
+    @team = Team.find(params[:team_id])
+    @room_message = RoomMessage.new(room: @room)
     @room_messages = @room.room_messages.includes(:user)
   end
 
@@ -25,7 +22,7 @@ class RoomsController < ApplicationController
 
     if @room.save
       flash[:success] = "Room #{@room.name} was created successfully"
-      redirect_to team_rooms_path
+      redirect_to team_positions_path
     else
       render :new
     end
@@ -35,7 +32,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @room.destroy
 
-    redirect_to team_rooms_path(params[:team_id])
+    redirect_to team_positions_path(params[:team_id])
   end
 
   protected

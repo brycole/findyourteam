@@ -114,14 +114,12 @@
   <!-- </ul> -->
 
 <%= link_to "Back to teams", teams_path %>
-
+<br>
+<br>
 <div class="chat">
-  <%= link_to "Create a chat room", new_team_room_path(@team.id) %>
-  <%= link_to "Browse chat rooms", team_rooms_path(@team.id) %>
+  <div><%= link_to "Create a chat room", new_team_room_path(@team.id) %></div>
 </div>
-
 <% if @rooms.present? %>
-
   <nav class="nav flex-column">
     <ol>
     <% @rooms.each do |room| %>
@@ -132,9 +130,8 @@
     <% end %>
     </ol>
   </nav>
-
 <% else %>
   <div class="text-muted">
-    The are no rooms
+    Create your first team chat!
   </div>
 <% end %>
