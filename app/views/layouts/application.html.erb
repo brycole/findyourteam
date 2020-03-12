@@ -13,10 +13,16 @@
     <% if action_name == 'home' %>
       <%= yield %>
     <% else %>
-      <%= render 'shared/navbar' %>
-      <%= render 'shared/flashes' %>
-      <%= yield %>
+    <% if current_user.show_game == "1" %>
+      <div class="tinted-image-dota2">
+    <% elsif current_user.show_game == "2" %>
+      <div class="tinted-image-cs">
     <% end %>
+        <%= render 'shared/navbar' %>
+        <%= render 'shared/flashes' %>
+        <%= yield %>
+      <% end %>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
