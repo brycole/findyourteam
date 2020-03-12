@@ -1,18 +1,41 @@
-.card-wrapper-player{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-style: solid;
-  background-color: #ffffff;
+.card-wrapper-player {
 
+  border: solid 1px transparent; // needs to be transparent, as the image takes over, specify the size of the border here, solid doesnt matter
+  border-radius: 4px; // You can change the radius to whatever you like
+  background-image: linear-gradient(black, black), // this will be the background color of the element
+                    linear-gradient(to bottom, white, transparent); // this will be the linear-gradient of the border you can use to top to reverse direction
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  padding: 0px;
+
+
+  .card-buttons {
+    display: flex;
+
+    a {
+      font-size: 20px;
+    }
+
+    .button-card {
+      border-radius: 8px;
+      color: white;
+      padding: 6px 36px;
+      border: 1px solid white;
+      background: red;
+      margin-right: 24px;
+    }
+  }
+}
+
+.card-wrapper-player-flex {
   display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-  width: 400px;
+  padding: 12px;
+}
+.avatar-square-player {
+  display: flex;
+  align-items: center;
 }
 
-.avatar-square-player {
-  width:110px;
-}
 .card-position-player{
   display: flex;
   justify-content: center;
@@ -20,12 +43,14 @@
   flex-direction: column;
   margin-left: 10px;
 }
+
 .cards-player {
   display:grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 24px;
   padding: 5px;
-}
+  background: rgba(1, 1, 1, 0.47);
+ }
 
 .cards-main-player {
   display: flex;
@@ -38,8 +63,24 @@
   justify-content: center;
   align-items: left;
   flex-direction: column;
-  margin-left: 10px;
+  color: white;
+  margin: 10px;
+  position: relative;
+
+  h3 {
+    font-size: 24px;
+  }
+   p {
+    font-size: 16px;
+  }
+
+  .card-position-image {
+    position: absolute;
+    top: 20;
+    right: 12;
+  }
 }
+
 
 .card-wrapper{
   margin-top: 10px;
@@ -52,8 +93,8 @@
 
 .avatar-card-position{
  width: 100px;
-}
 
+}
 
 .cards {
   display:grid;

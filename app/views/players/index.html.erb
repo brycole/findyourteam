@@ -9,28 +9,38 @@
         placeholder: "Find a player",
         autocomplete: "off"
       %>
+      <br>
       <%= submit_tag "Search", class: "btn btn-outline-dark" %>
       </button>
     </div>
   <% end %>
+
   <div class="cards-main-player" style="background-image: url(https://media.threatpost.com/wp-content/uploads/sites/103/2019/03/14151149/Counterstrike.jpg)">
     <div class="cards-player" >
-        <% @players.each do|player| %>
-            <div class="card-wrapper-player">
-              <div>
-                  <%= image_tag player.rank.image, size: "120x120",class: "avatar-square-player" %>
+      <% @players.each do|player| %>
+        <div class="card-wrapper-player">
+          <div class="card-wrapper-player-flex">
+            <div class="avatar-square-player">
+            <% if player.photo.attached? %>
+              <%= cl_image_tag player.photo.key, height: 140, width: 140 %>
+            <% else %>
+              <%= image_tag "avatar_logo.jpg", height: 140, width: 140 %>
+            <% end %>
+            </div>
+            <div class="card-position">
+              <h3><%= player.position_name.name %></h3>
+              <p><%= player.nickname %></p>
+              <div class="card-buttons">
+                <%= link_to "PROFILE", player_path(player), class: "button-card" %>
+                <%= link_to "INVITE", create_invitation_path(player: player.id, game_id: player.game, position: player.position_name), class: "button-card button-card-black" %>
               </div>
-              <div class="card-position">
-                <div>Position => <%= player.position_name.name %></div>
-                <div>Nickname => <%= player.nickname %></div>
-                <div><td>Capitain's Pick => <%= link_to "Invite player", controller: "pending_applications",
-                                            action: "create_invitation",
-                                            player: player.id,
-                                            game_id: player.game,
-                                            position: player.position_name %></td></div>
+            </div>
+              <%= image_tag player.rank.image, height: 50 , width: 50 %>
+            <div class="card-position-image">
             </div>
           </div>
-        <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
