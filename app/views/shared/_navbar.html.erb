@@ -1,59 +1,66 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
+<div class="navbar-find">
+  <!-- left section -->
+<%= link_to root_path, class: "navbar-brand" do %>
     <% if current_user.nil? || current_user.show_game == "1" %>
-        <%= image_tag "dota2_red.png", height: 25, width: 25, crop: :fill %>
+        <%= image_tag "dota2logo.png", height: 55, width: 151, crop: :fill %>
       <% elsif current_user.show_game == "2" %>
-        <%= image_tag "csgo.png" %>
-      <% elsif current_user.show_game == "3" %>
-        <%= image_tag "overwatch1.png" %>
+        <%= image_tag "csgologo.png" %>
     <% end %>
   <% end %>
 
-  <div class="" id="">
-    <p><%= link_to "Dota 2", set_user_game_path(game: Game.find_by(title: "Dota2").id), method: :post %></p>
-  </div>
-  <div class="" id="">
-    <p><%= link_to "CS: GO", set_user_game_path(game: Game.find_by(title: "CS: GO").id), method: :post %></p>
-  </div>
-  <div class="" id="">
-    <p><%= link_to "Overwatch", set_user_game_path(game: Game.find_by(title: "Overwatch").id), method: :post %></p>
-  </div>
+  <!-- middle section -->
+  <div class="text-center">
+    <% if user_signed_in? %>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag(current_user.photo.key, width: 70, height: 70, crop: :fill, gravity: :face) %>
+      <% else %>
+        <%= image_tag "avatar_logo.jpg", class: "avatar-new dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%= link_to "Your Profile", player_path(current_user), class: "dropdown-item" %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+      </div>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
-      <% if user_signed_in? %>
-        <li class="nav-item active">
+      <ul class="nav nav-tabs d-flex">
+        <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to "Teams", teams_path, class: "nav-link" %>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to "Players", players_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-        <% if current_user.photo.attached? %>
-          <%= cl_image_tag(current_user.photo.key, width: 70, height: 70, crop: :fill, gravity: :face) %>
-        <% else %>
-          <%= image_tag "avatar_logo.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <% end %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <% greeting = "#{ current_user.email.split('@').first.capitalize}" %>
-            <p class="dropdown-item">Hi <%= greeting %>!</p>
-            <%= link_to "Your Profile", player_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Players", players_path, class: "nav-link" %>
         </li>
-      <% end %>
-    </ul>
+        <li class="nav-item">
+          <%= link_to "Players", players_path, class: "nav-link" %>
+        </li>
+      </ul>
+    <% else %>
+    <div class="d-flex">
+
+      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+
+    </div>
+
+    <% end %>
+  </div>
+
+  <!-- right section -->
+  <div class="dota2logo">
+    <% if current_user.nil? || current_user.show_game == "1" %>
+        <%= image_tag "dota2_logo.png", height: 75, width: 120, crop: :fill %>
+      <% elsif current_user.show_game == "2" %>
+        <%= image_tag "csgo_logo.png" %>
+    <% end %>
   </div>
 </div>
+
+
+
+
+
+
