@@ -27,6 +27,58 @@
   }
 }
 
+
+.player-avatar-big {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+
+  border: solid 1px transparent; // needs to be transparent, as the image takes over, specify the size of the border here, solid doesnt matter
+  border-radius: 8px; // You can change the radius to whatever you like
+  background-image: linear-gradient(black, black), // this will be the background color of the element
+                    linear-gradient(to top, white, transparent); // this will be the linear-gradient of the border you can use to top to reverse direction
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.player-stats {
+  color: white;
+  margin-top: 40px;
+    h1 { margin-bottom: 24px;}
+    h3 { margin: 0;}
+}
+
+.player-wrapper-avatar {
+  display: flex;
+  position: relative;
+}
+
+.player-rank {
+  position: absolute;
+  right: 56px;
+  top: 40px;
+}
+
+.player-div-orange {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 140px;
+  height: 45px;
+  margin-right: 40px;
+  padding: 0px;
+
+  border: solid 1px transparent; // needs to be transparent, as the image takes over, specify the size of the border here, solid doesnt matter
+  border-radius: 8px; // You can change the radius to whatever you like
+  background-image: linear-gradient(#C6441B, #C6441B), // this will be the background color of the element
+                    linear-gradient(to bottom, white, transparent); // this will be the linear-gradient of the border you can use to top to reverse direction
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
 .card-wrapper-player-flex {
   display: flex;
   padding: 12px;
