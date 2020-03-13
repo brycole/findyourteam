@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :room_messages
   devise_for :users
   root to: 'pages#home'
   post "/set_user_team", to: "teams#set_user_team", as: :set_user_team
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   resources :teams, only: [:show, :index, :new, :create] do
     resources :positions
     resources :pending_applications, only: [ :index, :create ]
+    resources :rooms
   end
 
   get 'positions', to: 'positions#all'

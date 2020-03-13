@@ -1,0 +1,6 @@
+<h1>Create a new chat</h1>
+<%= simple_form_for [@team, @room] do |form| %>
+  <%= form.input :name %>
+  <%= form.submit "Save", class: 'btn btn-success' %>
+<% end %>
+<%= link_to "Back to Team", team_positions_path(@team)  %>

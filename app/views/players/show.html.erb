@@ -1,64 +1,70 @@
-<td>
-  <div class="row justify-content-center">
-  <% if @player.photo.attached? %>
-    <%= cl_image_tag @player.photo.key, height: 100, width: 100, crop: :fill %>
-    <% else %>
-    <%= image_tag "avatar_logo.jpg" , height: 100, width: 100, crop: :fill %>
-  <% end %>
-  </div>
-</td>
-<br>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-4 col-sm-offset-3">
-      <h3>My Profile</h3>
-       <h3> <%= @player.nickname %></h3>
-       <h3> <%= @player.email %></h3>
-       <h3> <%= @player.rank.name %></h3>
+
+<div class="main-container">
+  <div class="player-wrapper d-flex justify-content-between">
+    <div class="player-avatar">
+    <% if @player.photo.attached? %>
+      <%= cl_image_tag @player.photo.key, height: 100, width: 100, crop: :fill %>
+      <% else %>
+      <%= image_tag "avatar_logo.jpg" , height: 100, width: 100, crop: :fill %>
+    <% end %>
+    </div>
+    <div class="player-stats">
+      <h1> <%= @player.nickname %></h1>
+      <h3> <%= @player.position_name.name %></h3>
+      <h3> <%= @player.rank.name %></h3>
+      <h3> German </h3>
+    </div>
+    <div class="player-rank">
+      <%= image_tag @player.rank.image, size: "120x120",class: "avatar-square-player" %>
     </div>
   </div>
-  <br>
-  <br>
-  <% if @player == current_user %>
-    <h1>This is my profile!</h1>
-    <h2>Your Teams:</h2>
-    <% current_user.teams.each do |team| %>
-    <%= link_to team.name, team_positions_path(team.id) %>
-    <% end %>
-    <h2>Teams that you have been invited to:</h2>
-    <table class="table table-dark table-hover table-borderless table-sm">
-      <thead>
-        <tr>
-          <th scope="col">Appl Number</th>
-          <th scope="col">Position</th>
-          <th scope="col">User</th>
-          <th scope="col">User Approval</th>
-          <th scope="col">Captain Approval</th>
-          <th scope="col">Approve (Player)</th>
-        </tr>
-      </thead>
-      <tbody>
-          <% @pending_invitations.each do |invitation| %>
+
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-warning m-2">Invite</button>
+    <button type="button" class="btn btn-warning m-2">Message</button>
+    <button type="button" class="btn btn-warning m-2">Stats</button>
+  </div>
+
+  <div class="container">
+    <% if @player == current_user %>
+      <% current_user.teams.each do |team| %>
+      <%= link_to team.name, team_positions_path(team.id) %>
+      <% end %>
+      <h2>Pending Applications</h2>
+      <table class="table table-dark table-hover table-borderless table-sm">
+        <thead>
           <tr>
-            <td><%= invitation.id %></td>
-            <td><%= invitation.position.position_name.name %></td>
-            <td><%= invitation.user.email %></td>
-            <td><%= invitation.user_approval %></td>
-            <td><%= invitation.owner_approval %></td>
-            <% if invitation.position.user.nil? %>
-              <td><%= button_to 'Approve', player_approve_path(id:invitation.id), method: :post %></td>
-            <% else %>
-              <td>TOO LATE - POSTION TAKEN</td>
-            <% end %>
+            <th scope="col">Appl Number</th>
+            <th scope="col">Position</th>
+            <th scope="col">User</th>
+            <th scope="col">User Approval</th>
+            <th scope="col">Captain Approval</th>
+            <th scope="col">Approve (Player)</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-  <br>
-  <br>
-  <%= link_to "Back to Players", players_path, class: "btn btn-outline-primary" %>
-  <br>
-  <br>
-  <%= link_to "edit", edit_user_registration_path, class: "btn btn-outline-primary" %>
+        </thead>
+        <tbody>
+            <% @pending_invitations.each do |invitation| %>
+            <tr>
+              <td><%= invitation.id %></td>
+              <td><%= invitation.position.position_name.name %></td>
+              <td><%= invitation.user.email %></td>
+              <td><%= invitation.user_approval %></td>
+              <td><%= invitation.owner_approval %></td>
+              <% if invitation.position.user.nil? %>
+                <td><%= button_to 'Approve', player_approve_path(id:invitation.id), method: :post %></td>
+              <% else %>
+                <td>TOO LATE - POSTION TAKEN</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+    <br>
+    <br>
+    <%= link_to "Back to Players", players_path, class: "btn btn-outline-primary" %>
+    <br>
+    <br>
+    <%= link_to "edit", edit_user_registration_path, class: "btn btn-outline-primary" %>
+  </div>
 </div>
