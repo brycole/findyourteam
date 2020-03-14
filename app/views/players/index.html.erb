@@ -36,10 +36,10 @@
               <br>
               <p><%= player.position_name.name %></p>
               <div class="card-buttons">
-                <%= link_to player_path(player) do %>
+                <%= link_to create_invitation_path(player: player.id, game_id: player.game, position: player.position_name) do %>
                   <div class="player-button-black">INVITE</div>
                 <% end %>
-                <%= link_to create_invitation_path(player: player.id, game_id: player.game, position: player.position_name) do %>
+                <%= link_to player_path(player) do %>
                   <div class="player-button-red top">BROWSE</div>
                 <% end %>
               </div>
