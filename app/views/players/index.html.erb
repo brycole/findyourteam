@@ -1,24 +1,22 @@
+    <div class="d-flex align-items-center py-3">
+      <div class="category">
+      <div class="p-2 bg-gradient-dark mr-5">FILTER BY</div>
+      <div class="p-2 bg-gradient-dark mr-5">POSITION</div>
+      <div class="p-2 bg-gradient-dark mr-5">RANK</div>
+      <div class="p-2 bg-gradient-dark mr-5">SEARCH</div>
+
+
+      <%= form_tag players_path, method: :get, class: "form-inline" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "ENTER NICKNAME",
+          autocomplete: "off"
+        %>
+      <% end %>
+      </div>
+    </div>
   <div class="cards-main-player">
-
-  <div class="d-flex">
-
-    <div class="p-2 bg-info flex-fill">FILTER BY</div>
-    <div class="p-2 bg-warning flex-fill">POSITION</div>
-    <div class="p-2 bg-primary flex-fill">RANK</div>
-
-
-    <%= form_tag players_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a player",
-        autocomplete: "off"
-      %>
-      <%= submit_tag "SEARCH", class: "btn btn-outline-dark" %>
-    <% end %>
-
-  </div>
-
 
     <div class="cards-player" >
       <% @players.each do|player| %>
@@ -35,11 +33,13 @@
               <h3><%= player.position_name.name %></h3>
               <p><%= player.nickname %></p>
               <div class="card-buttons">
-                <%= link_to "PROFILE", player_path(player), class: "button-card" %>
+                <%= link_to player_path(player) do %>
+                  <div class="button-card bg-black">BROWSE</div>
+                <% end %>
                 <%= link_to "INVITE", create_invitation_path(player: player.id, game_id: player.game, position: player.position_name), class: "button-card button-card-black" %>
               </div>
             </div>
-              <%= image_tag player.rank.image, height: 50 , width: 50 %>
+              <%= image_tag player.rank.image, height: 50 , width: 50, class: "card-rank" %>
             <div class="card-position-image">
             </div>
           </div>
@@ -48,3 +48,6 @@
     </div>
   </div>
 </div>
+
+
+

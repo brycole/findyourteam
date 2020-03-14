@@ -11,22 +11,24 @@
 
   .card-buttons {
     display: flex;
+    background: black;
 
     a {
       font-size: 20px;
     }
 
     .button-card {
-      border-radius: 8px;
       color: white;
       padding: 6px 36px;
-      border: 1px solid white;
       background: red;
       margin-right: 24px;
     }
   }
 }
 
+.form-control {
+  background-color: black;
+}
 
 .player-avatar-big {
   width: 200px;
@@ -82,6 +84,13 @@
 .card-wrapper-player-flex {
   display: flex;
   padding: 12px;
+  position: relative;
+  flex-wrap: wrap;
+}
+.card-rank {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 .avatar-square-player {
   display: flex;
@@ -246,4 +255,13 @@ img.avatar-large {
   margin-left: 50px;
   position: absolute;
   left: 10px;
+}
+
+.button-card-black {
+  border: solid 1px transparent; // needs to be transparent, as the image takes over, specify the size of the border here, solid doesnt matter
+  border-radius: 8px; // You can change the radius to whatever you like
+  background-image: linear-gradient(black, black), // this will be the background color of the element
+                    linear-gradient(to bottom, white, transparent); // this will be the linear-gradient of the border you can use to top to reverse direction
+  background-origin: border-box;
+  background-clip: content-box, border-box;
 }
