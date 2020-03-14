@@ -149,10 +149,14 @@
 }
 
 .cards {
-  display:grid;
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   padding: 16px;
+  justify-items: center;
+  a {
+    text-decoration: none;
+  }
 }
 
 .card {
@@ -246,4 +250,99 @@ img.avatar-large {
   margin-left: 50px;
   position: absolute;
   left: 10px;
+}
+
+.team-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
+  justify-items: center;
+  a {
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .team-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 992px) {
+  .team-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .team-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.team-card {
+  width: 250px;
+  height: 300px;
+  text-align: center;
+  border-radius: 16px;
+  background-color: rgba(4, 5, 45, 1);
+  border: 1px solid rgba(4, 5, 45, 1);
+  box-shadow: inset 0px 0px 84px black;
+  background-image: url(asset_path("virtuspro_logo.png"));
+  position: relative;
+  background-position: 50% 25%;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  transition: .2s ease;
+  &:hover {
+    background-size: 100%;
+    transition: .2s ease;
+  }
+  .team-name-card {
+    padding-top: 200px;
+    font-size: 24px;
+    color: white;
+  }
+  .team-region-card {
+    color: #067275;
+    font-weight: bolder;
+    font-family: 'Ubuntu Condensed', serif;
+    &:hover {
+      opacity: 0;
+    }
+  }
+}
+
+.team-player-roster-card {
+  font-family: 'Ubuntu Condensed', serif;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  border-radius: 16px;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background: rgba(1, 1, 1, 0.8);
+  &:hover {
+    opacity: 1;
+  }
+  h2 {
+    font-size: 18px;
+    margin-bottom: 2px;
+  }
+  p {
+    font-size: 14px;
+    color: #0AB1B7;
+    margin-bottom: 8px;
+  }
+}
+
+.team-card:hover .team-name-card{
+  visibility :hidden;
+}
+.team-card:hover .team-region-card {
+  visibility :hidden;
 }
