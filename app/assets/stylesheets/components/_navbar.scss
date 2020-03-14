@@ -24,13 +24,13 @@
   background-clip: content-box, border-box;
 }
 
-/* dota2_logo */
-
-.dota2_logo {
-  width: 120px;
-  background: url(dota_logo.png);
+.left-logo {
+  width: 160px;
 }
-
+.game-logo {
+  width: 160px;
+  text-align: right;
+}
 
 /* menu */
 .nav-tabs{
@@ -39,21 +39,21 @@
 }
 
 //dota font
-// .nav-tabs .nav-link {
-//   color: white;
-//   font-family: 'Roboto', sans-serif;
-//   font-style: light;
-//   font-size: 16px;
-//   line-height: 100%;
-// }
-
-//cs font
 .nav-tabs .nav-link {
   color: white;
-  font-family: 'Teko', sans-serif;
-  font-style: regular;
+  font-family: 'Roboto', sans-serif;
+  font-style: light;
   font-size: 16px;
   line-height: 100%;
 }
+
+//cs font
+// .nav-tabs .nav-link {
+//   color: white;
+//   font-family: 'Teko', sans-serif;
+//   font-style: regular;
+//   font-size: 16px;
+//   line-height: 100%;
+// }
 
 
