@@ -1,20 +1,25 @@
-  <div>
-  <h2>Index of Players</h2>
+  <div class="cards-main-player">
 
-  <%= form_tag players_path, method: :get do %>
-    <div class="search-form-control form-group">
+  <div class="d-flex">
+
+    <div class="p-2 bg-info flex-fill">FILTER BY</div>
+    <div class="p-2 bg-warning flex-fill">POSITION</div>
+    <div class="p-2 bg-primary flex-fill">RANK</div>
+
+
+    <%= form_tag players_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
         placeholder: "Find a player",
         autocomplete: "off"
       %>
-      <br>
-      <%= submit_tag "Search", class: "btn btn-outline-dark" %>
-      </button>
-    </div>
-  <% end %>
-  <div class="cards-main-player">
+      <%= submit_tag "SEARCH", class: "btn btn-outline-dark" %>
+    <% end %>
+
+  </div>
+
+
     <div class="cards-player" >
       <% @players.each do|player| %>
         <div class="card-wrapper-player">
