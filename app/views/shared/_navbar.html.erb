@@ -1,18 +1,21 @@
 <div class="navbar-find">
   <!-- left section -->
-<%= link_to root_path, class: "navbar-brand" do %>
-    <% if current_user.nil? || current_user.show_game == "1" %>
-        <%= image_tag "dota2logo.png", height: 55, width: 151, crop: :fill %>
-      <% elsif current_user.show_game == "2" %>
-        <%= image_tag "csgologo.png" %>
+  <div class="left-logo">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <% if current_user.nil? || current_user.show_game == "1" %>
+          <%= image_tag "dota2logo.png", height: 55, width: 151, crop: :fill %>
+        <% elsif current_user.show_game == "2" %>
+          <%= image_tag "csgologo.png" %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
 
   <!-- middle section -->
   <div class="text-center">
     <% if user_signed_in? %>
       <% if current_user.photo.attached? %>
-        <%= cl_image_tag(current_user.photo.key, width: 70, height: 70, crop: :fill, gravity: :face) %>
+        <%= cl_image_tag(current_user.photo.key, class: "avatar-new dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width: 70, height: 70, crop: :fill, gravity: :face) %>
       <% else %>
         <%= image_tag "avatar_logo.jpg", class: "avatar-new dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <% end %>
@@ -22,7 +25,7 @@
         <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       </div>
 
-      <ul class="nav nav-tabs d-flex">
+      <ul class="nav nav-tabs d-flex <%= current_user.show_game == "1" ? "dota" : "csgo" %> ">
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
@@ -50,13 +53,15 @@
   </div>
 
   <!-- right section -->
-  <div class="dota2logo">
+
+  <div class="game-logo">
     <% if current_user.nil? || current_user.show_game == "1" %>
         <%= image_tag "dota2_logo.png", height: 75, width: 120, crop: :fill %>
       <% elsif current_user.show_game == "2" %>
         <%= image_tag "csgo_logo.png" %>
     <% end %>
   </div>
+
 </div>
 
 
