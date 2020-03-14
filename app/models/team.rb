@@ -6,6 +6,8 @@
 
   has_many :pending_applications, through: :positions
 
+  has_one_attached :photo
+
   def captain?(current_user)
     current_user == user
   end

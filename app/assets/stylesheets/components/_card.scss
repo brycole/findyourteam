@@ -67,8 +67,8 @@
   align-items: center;
   justify-content: center;
   color: white;
-  width: 140px;
-  height: 45px;
+  width: 190px;
+  height: 55px;
   margin-right: 40px;
   padding: 0px;
 
@@ -79,6 +79,17 @@
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
+
+.invitation-card {
+  height: 100px;
+  width: 100%;
+  background: rgba(1, 1, 1, 0.4);
+  color: white;
+  a {
+    color: white;
+  }
+}
+
 .card-wrapper-player-flex {
   display: flex;
   padding: 12px;
