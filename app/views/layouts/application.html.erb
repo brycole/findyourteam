@@ -24,7 +24,9 @@
       <% end %>
         <%= render 'shared/navbar' %>
         <%= render 'shared/flashes' %>
-        <%= yield %>
+        <div class="container main-container">
+          <%= yield %>
+        </div>
       </div>
     <% end %>
     <%= javascript_include_tag 'application' %>
