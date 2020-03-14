@@ -18,30 +18,55 @@
 </div>
 
 <div class="d-flex justify-content-center">
-  <div class="player-div-orange">INVITE</div>
-  <div class="player-div-orange">MESSAGE</div>
-  <div class="player-div-orange">STATS</div>
+  <div class="player-button-orange btn">INVITE</div>
+  <div class="player-button-orange btn">MESSAGE</div>
+  <div class="player-button-orange btn">STATS</div>
 </div>
 
 <div class = "invitation-wrapper" >
   <h2>Pending Invitations</h2>
-  <% @pending_applications.each do |pending_applications| %>
-    <% if pending_applications.user_approval %>
-      <div class="invitation-card">
-        <% if pending_applications.position.team.photo.attached? %>
-          <%= cl_image_tag player.photo.key, height: 90, width: 90 %>
-        <% else %>
-          <%= image_tag "void.png", height: 90, width: 90, crop: :fill %>
-        <% end %>
-        <%= link_to pending_applications.position.team.name, team_positions_path(pending_applications.position.team.id) %>
+  <% @pending_applications.each do |pending_application| %>
+    <% if pending_application.user_approval %>
+      <div class="invitation-card d-flex align-items-center">
+        <div class="invitation-team-image">
+          <% if pending_application.position.team.photo.attached? %>
+            <%= cl_image_tag player.photo.key, height: 90, width: 90 %>
+          <% else %>
+            <%= image_tag "void.png", height: 90, width: 90, crop: :fill %>
+          <% end %>
+        </div>
+
+        <%= link_to pending_application.position.team.name, team_positions_path(pending_application.position.team.id) %>
+        <div class="player-button-wrapper d-flex">
+          <% if pending_application.position.user.nil? %>
+            <%= link_to player_approve_path(id:pending_application.id), method: :post do %>
+              <div class="player-button-green">APPROVE</div>
+            <% end %>
+              <div class="player-button-red">DECLINE</div>
+          <% else %>
+            <td>TOO LATE - POSTION TAKEN</td>
+          <% end %>
+        </div>
       </div>
     <% end %>
   <% end %>
   <h2>My Applications</h2>
-  <% @pending_applications.each do |pending_applications| %>
-    <% if pending_applications.owner_approval %>
-      <div class="invitation-card d">
-        <%= link_to pending_applications.position.team.name, team_positions_path(pending_applications.position.team.id) %>
+  <% @pending_applications.each do |pending_application| %>
+     <% if pending_application.owner_approval %>
+      <div class="invitation-card d-flex align-items-center">
+        <div class="invitation-team-image">
+          <% if pending_application.position.team.photo.attached? %>
+            <%= cl_image_tag player.photo.key, height: 90, width: 90 %>
+          <% else %>
+            <%= image_tag "void.png", height: 90, width: 90, crop: :fill %>
+          <% end %>
+        </div>
+        <%= link_to pending_application.position.team.name, team_positions_path(pending_application.position.team.id) %>
+        <div class="player-button-wrapper d-flex">
+          <%= link_to team_positions_path(pending_application.position.team.id) do %>
+            <div class="player-button-green">VIEW</div>
+          <% end %>
+        </div>
       </div>
     <% end %>
   <% end %>
