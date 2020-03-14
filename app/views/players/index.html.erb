@@ -22,21 +22,26 @@
       <% @players.each do|player| %>
         <div class="card-wrapper-player">
           <div class="card-wrapper-player-flex">
-            <div class="avatar-square-player">
-            <% if player.photo.attached? %>
-              <%= cl_image_tag player.photo.key, height: 140, width: 140 %>
-            <% else %>
-              <%= image_tag "avatar_logo.jpg", height: 140, width: 140 %>
+            <%= link_to player_path(player) do %>
+              <div class="avatar-square-player">
+                <% if player.photo.attached? %>
+                  <%= cl_image_tag player.photo.key, height: 150, width: 150 %>
+                <% else %>
+                  <%= image_tag "avatar_logo.jpg", height: 150, width: 150 %>
+                <% end %>
+              </div>
             <% end %>
-            </div>
             <div class="card-position">
               <h3><%= player.position_name.name %></h3>
+              <br>
               <p><%= player.nickname %></p>
               <div class="card-buttons">
                 <%= link_to player_path(player) do %>
-                  <div class="button-card bg-black">BROWSE</div>
+                  <div class="player-button-black">BROWSE</div>
                 <% end %>
-                <%= link_to "INVITE", create_invitation_path(player: player.id, game_id: player.game, position: player.position_name), class: "button-card button-card-black" %>
+                <%= link_to create_invitation_path(player: player.id, game_id: player.game, position: player.position_name) do %>
+                  <div class="player-button-red top">INVITE</div>
+                <% end %>
               </div>
             </div>
               <%= image_tag player.rank.image, height: 50 , width: 50, class: "card-rank" %>

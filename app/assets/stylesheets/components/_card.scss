@@ -127,11 +127,22 @@
                     linear-gradient(to bottom, white, transparent);
 }
 
+.player-button-black {
+  @extend .border-gradient;
+  @extend .invitation-button;
+  background-image: linear-gradient(#000000, #000000),
+                    linear-gradient(to top, white, transparent);
+}
+
 .player-button-red {
   @extend .border-gradient;
   @extend .invitation-button;
   background-image: linear-gradient(#780002, #780002),
                     linear-gradient(to bottom, white, transparent);
+  &.top {
+    background-image: linear-gradient(#780002, #780002),
+                    linear-gradient(to top, white, transparent);
+  }
 }
 
 .player-button-wrapper {
@@ -151,8 +162,15 @@
   right: 8px;
 }
 .avatar-square-player {
+  @extend .border-gradient;
+  border-radius: 8px;
+  img {
+    border-radius: 0 0 8px 8px;
+  }
   display: flex;
   align-items: center;
+  background-image: linear-gradient(#FEFEFE, #FEFEFE),
+                    linear-gradient(to top, white, transparent);
 }
 
 .card-position-player{
@@ -183,7 +201,7 @@
   align-items: left;
   flex-direction: column;
   color: white;
-  margin: 10px;
+  margin: 12px;
   position: relative;
 
   h3 {
