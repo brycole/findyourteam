@@ -7,10 +7,10 @@
   <% end %>
   </div>
   <div class="player-stats">
-    <h1> <%= @player.nickname %></h1>
-    <h3> <%= @player.position_name.name %></h3>
-    <h3> <%= @player.rank.name %></h3>
-    <h3> Germany </h3>
+    <h1>Nickname: <%= @player.nickname %></h1>
+    <h3>Position: <%= @player.position_name.name %></h3>
+    <h3>Rank: <%= @player.rank.name %></h3>
+    <h3>Region: Germany</h3>
   </div>
   <div class="player-rank">
     <%= image_tag @player.rank.image, size: "125x125",class: "avatar-square-player" %>
@@ -18,50 +18,56 @@
 </div>
 
 <div class="d-flex justify-content-center">
-  <div class="player-div-orange">Invite</div>
-  <div class="player-div-orange">Message</div>
-  <div class="player-div-orange">Stats</div>
+  <div class="player-button-orange btn">INVITE</div>
+  <div class="player-button-orange btn">MESSAGE</div>
+  <div class="player-button-orange btn">STATS</div>
 </div>
 
-<div class="container">
-  <% if @player == current_user %>
-    <% current_user.teams.each do |team| %>
-    <%= link_to team.name, team_positions_path(team.id) %>
-    <% end %>
-    <h2>Pending Applications</h2>
-    <table class="table table-dark table-hover table-borderless table-sm">
-      <thead>
-        <tr>
-          <th scope="col">Appl Number</th>
-          <th scope="col">Position</th>
-          <th scope="col">User</th>
-          <th scope="col">User Approval</th>
-          <th scope="col">Captain Approval</th>
-          <th scope="col">Approve (Player)</th>
-        </tr>
-      </thead>
-      <tbody>
-          <% @pending_invitations.each do |invitation| %>
-          <tr>
-            <td><%= invitation.id %></td>
-            <td><%= invitation.position.position_name.name %></td>
-            <td><%= invitation.user.email %></td>
-            <td><%= invitation.user_approval %></td>
-            <td><%= invitation.owner_approval %></td>
-            <% if invitation.position.user.nil? %>
-              <td><%= button_to 'Approve', player_approve_path(id:invitation.id), method: :post %></td>
-            <% else %>
-              <td>TOO LATE - POSTION TAKEN</td>
+<div class = "invitation-wrapper" >
+  <h2>Pending Invitations</h2>
+  <% @pending_applications.each do |pending_application| %>
+    <% if pending_application.user_approval %>
+      <div class="invitation-card d-flex align-items-center">
+        <div class="invitation-team-image">
+          <% if pending_application.position.team.photo.attached? %>
+            <%= cl_image_tag player.photo.key, height: 90, width: 90 %>
+          <% else %>
+            <%= image_tag "void.png", height: 90, width: 90, crop: :fill %>
+          <% end %>
+        </div>
+
+        <%= link_to pending_application.position.team.name, team_positions_path(pending_application.position.team.id) %>
+        <div class="player-button-wrapper d-flex">
+          <% if pending_application.position.user.nil? %>
+            <%= link_to player_approve_path(id:pending_application.id), method: :post do %>
+              <div class="player-button-green">APPROVE</div>
             <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+              <div class="player-button-red">DECLINE</div>
+          <% else %>
+            <td>TOO LATE - POSTION TAKEN</td>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-  <br>
-  <br>
-  <%= link_to "Back to Players", players_path, class: "btn btn-outline-primary" %>
-  <br>
-  <br>
-  <%= link_to "edit", edit_user_registration_path, class: "btn btn-outline-primary" %>
+  <h2>My Applications</h2>
+  <% @pending_applications.each do |pending_application| %>
+     <% if pending_application.owner_approval %>
+      <div class="invitation-card d-flex align-items-center">
+        <div class="invitation-team-image">
+          <% if pending_application.position.team.photo.attached? %>
+            <%= cl_image_tag player.photo.key, height: 90, width: 90 %>
+          <% else %>
+            <%= image_tag "void.png", height: 90, width: 90, crop: :fill %>
+          <% end %>
+        </div>
+        <%= link_to pending_application.position.team.name, team_positions_path(pending_application.position.team.id) %>
+        <div class="player-button-wrapper d-flex">
+          <%= link_to team_positions_path(pending_application.position.team.id) do %>
+            <div class="player-button-green">VIEW</div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
