@@ -26,16 +26,17 @@
     }
 
     .button-card {
-      border-radius: 8px;
       color: white;
       padding: 6px 36px;
-      border: 1px solid white;
       background: red;
       margin-right: 24px;
     }
   }
 }
 
+.form-control {
+  background-color: black;
+}
 
 .player-avatar-big {
   width: 200px;
@@ -125,11 +126,22 @@
                     linear-gradient(to bottom, white, transparent);
 }
 
+.player-button-black {
+  @extend .border-gradient;
+  @extend .invitation-button;
+  background-image: linear-gradient(#C6441B, #C6441B),
+                    linear-gradient(to top, white, transparent);
+}
+
 .player-button-red {
   @extend .border-gradient;
   @extend .invitation-button;
-  background-image: linear-gradient(#780002, #780002),
+  background-image: linear-gradient(#000000, #000000 ),
                     linear-gradient(to bottom, white, transparent);
+  &.top {
+    background-image: linear-gradient(#000000, #000000),
+                    linear-gradient(to top, white, transparent);
+  }
 }
 
 .player-button-wrapper {
@@ -140,10 +152,24 @@
 .card-wrapper-player-flex {
   display: flex;
   padding: 12px;
+  position: relative;
+  flex-wrap: wrap;
+}
+.card-rank {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 .avatar-square-player {
+  @extend .border-gradient;
+  border-radius: 8px;
+  img {
+    border-radius: 0 0 8px 8px;
+  }
   display: flex;
   align-items: center;
+  background-image: linear-gradient(#FEFEFE, #FEFEFE),
+                    linear-gradient(to top, white, transparent);
 }
 
 .card-position-player{
@@ -174,7 +200,7 @@
   align-items: left;
   flex-direction: column;
   color: white;
-  margin: 10px;
+  margin: 12px;
   position: relative;
 
   h3 {
@@ -308,6 +334,15 @@ img.avatar-large {
   margin-left: 50px;
   position: absolute;
   left: 10px;
+}
+
+.button-card-black {
+  border: solid 1px transparent; // needs to be transparent, as the image takes over, specify the size of the border here, solid doesnt matter
+  border-radius: 8px; // You can change the radius to whatever you like
+  background-image: linear-gradient(black, black), // this will be the background color of the element
+                    linear-gradient(to bottom, white, transparent); // this will be the linear-gradient of the border you can use to top to reverse direction
+  background-origin: border-box;
+  background-clip: content-box, border-box;
 }
 
 .team-cards {
