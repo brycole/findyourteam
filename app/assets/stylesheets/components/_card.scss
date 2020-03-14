@@ -130,17 +130,17 @@
 .player-button-black {
   @extend .border-gradient;
   @extend .invitation-button;
-  background-image: linear-gradient(#000000, #000000),
+  background-image: linear-gradient(#C6441B, #C6441B),
                     linear-gradient(to top, white, transparent);
 }
 
 .player-button-red {
   @extend .border-gradient;
   @extend .invitation-button;
-  background-image: linear-gradient(#780002, #780002),
+  background-image: linear-gradient(#000000, #000000 ),
                     linear-gradient(to bottom, white, transparent);
   &.top {
-    background-image: linear-gradient(#780002, #780002),
+    background-image: linear-gradient(#000000, #000000),
                     linear-gradient(to top, white, transparent);
   }
 }
