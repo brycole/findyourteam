@@ -15,7 +15,7 @@
   <div class="text-center">
     <% if user_signed_in? %>
       <% if current_user.photo.attached? %>
-        <%= cl_image_tag(current_user.photo.key, width: 70, height: 70, crop: :fill, gravity: :face) %>
+        <%= cl_image_tag(current_user.photo.key, class: "avatar-new dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, width: 70, height: 70, crop: :fill, gravity: :face) %>
       <% else %>
         <%= image_tag "avatar_logo.jpg", class: "avatar-new dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <% end %>
@@ -25,7 +25,7 @@
         <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       </div>
 
-      <ul class="nav nav-tabs d-flex">
+      <ul class="nav nav-tabs d-flex <%= current_user.show_game == "1" ? "dota" : "csgo" %> ">
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>

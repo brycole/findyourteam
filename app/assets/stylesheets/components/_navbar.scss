@@ -38,8 +38,12 @@
   margin-bottom: 0;
 }
 
-//dota font
-.nav-tabs .nav-link {
+
+.nav-tabs .nav-link{
+  color: white;
+}
+
+.dota {
   color: white;
   font-family: 'Roboto', sans-serif;
   font-style: light;
@@ -48,12 +52,13 @@
 }
 
 //cs font
-// .nav-tabs .nav-link {
-//   color: white;
-//   font-family: 'Teko', sans-serif;
-//   font-style: regular;
-//   font-size: 16px;
-//   line-height: 100%;
-// }
+// .nav-tabs .nav-link
+.csgo, {
+  color: white;
+  font-family: 'Teko', sans-serif;
+  font-style: regular;
+  font-size: 16px;
+  line-height: 100%;
+}
 
 
