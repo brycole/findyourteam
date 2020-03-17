@@ -44,8 +44,12 @@
                 <% end %>
               </div>
             </div>
-              <%= image_tag player.rank.image, height: 50 , width: 50, class: "card-rank" %>
             <div class="card-position-image">
+              <% if player.rank.game.id == 1 %>
+                <%= image_tag player.rank.image, height: 50, width: 50, crop: :fill %>
+              <% else %>
+                <%= image_tag player.rank.image, height: 25, width: 50, crop: :fill %>
+              <% end %>
             </div>
           </div>
         </div>
