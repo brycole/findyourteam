@@ -164,11 +164,15 @@
 }
 
 .avatar-square-player {
+  @extend .border-gradient;
   border-radius: 8px;
   img {
     border-radius: 0 0 8px 8px;
   }
   display: flex;
+  align-items: center;
+  background-image: linear-gradient(#FEFEFE, #FEFEFE),
+                    linear-gradient(to top, white, transparent);
 }
 
 .card-position-player{
