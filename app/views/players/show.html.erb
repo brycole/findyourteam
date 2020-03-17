@@ -26,7 +26,7 @@
 <div class = "invitation-wrapper" >
   <h2>Pending Invitations</h2>
   <% @pending_applications.each do |pending_application| %>
-    <% if pending_application.user_approval %>
+    <% if pending_application.owner_approval %>
       <div class="invitation-card d-flex align-items-center">
         <div class="invitation-team-image">
           <% if pending_application.position.team.photo.attached? %>
@@ -52,7 +52,7 @@
   <% end %>
   <h2>My Applications</h2>
   <% @pending_applications.each do |pending_application| %>
-     <% if pending_application.owner_approval %>
+     <% if pending_application.user_approval %>
       <div class="invitation-card d-flex align-items-center">
         <div class="invitation-team-image">
           <% if pending_application.position.team.photo.attached? %>

@@ -1,14 +1,23 @@
-
-<h2>Teams for <%= current_user.show_game %></h2>
-<div class="cards">
-
+<div class="team-cards">
   <% @teams.each do|team| %>
   <!-- <a href="<%= team_positions_path(team) %>"> --></a>
-  <div class="card" >
-    <h4>Team: <%= link_to team.name, team_positions_path(team) %></h4>
-    <h5>Playing: <%= team.game.title %></h5>
-    <h5>Captained by: <%= team.user.email.split('@').first.capitalize %></h5>
-  </div>
+    <%= link_to team_positions_path(team) do %>
+      <div class="team-card" >
+        <div class="team-player-roster-card">
+          <% team.positions.each do |position| %>
+          <h2><%= position.position_name.name %></h2>
+          <p>
+            <% if position.user.nil? %>
+              APPLY NOW
+            <% else %>
+              <%= position.user.nickname %></p>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="team-name-card"><%= team.name %></div>
+        <div class="team-region-card">Europe</div>
+      </div>
+    <% end %>
   <% end %>
 </div>
 <%= link_to 'Create Team', new_team_path, class: "btn btn-outline-dark btn-padding" %>
