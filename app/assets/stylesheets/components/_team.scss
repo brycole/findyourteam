@@ -1,0 +1,43 @@
+.container-main{
+  margin: auto 0;
+  padding: 0 40px;
+}
+
+.container-top{
+  display: flex;
+  height: 250px;
+  // padding: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0;
+}
+
+
+.btn-lrg{
+  border: 1px solid white;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.top-right{
+  width: 200px;
+}
+.top-center {
+  // width: 200px;
+  // height: 300px;
+}
+
+.team-name {
+  text-align: center;
+}
+
+.card-container{
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+}
+
+.chat{
+  text-align: center;
+}
+
