@@ -3,12 +3,13 @@
 
     <div class="top-left">
       <% if @team.captain?(current_user) %>
-        <h4> <%= link_to "CREATE A POSITION", new_team_position_path(@team.id), class: "btn btn-danger btn-lrg" %> </h4>
+        <h4 class="player-button-orange btn"> <%= link_to "CREATE A POSITION", new_team_position_path(@team.id) %> </h4>
         <br>
-        <h4> <%= link_to "REVIEW APPLICATIONS", team_pending_applications_path(@team), class: "btn btn-danger btn-lrg" %> </h4>
+        <h4 class="player-button-orange btn"> <%= link_to "REVIEW APPLICATIONS", team_pending_applications_path(@team) %> </h4>
       <% else %>
       <% end %>
     </div>
+
 
     <div class="top-center">
       <%= image_tag "https://static.hltv.org/images/team/logo/5973", height: 200, width: 180, crop: :fill, class: "team-logo", alt: "team logo" %>
@@ -21,62 +22,27 @@
   <h2 class="team-name"><%= @team.name.upcase %></h2>
   <div class="card-container">
     <h1>card 1</h1>
-    <div class=
-      <% if current_user.show_game == '1' %>
-      'cards-dota2'
-      <% elsif current_user.show_game == '2' %>
-      'cards-csgo'
-      <% else %>
-      'cards-overwatch'
-      <% end %>
-  >
-    <% @positions.each do |position| %>
-      <!-- <div class="card card-product"> -->
-      <!--   <div class="card-product">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-product-infos">
-            <h2>Product name</h2>
-            <p>Product description with <strong>relevant info</strong> only.</p>
-          </div>
-        </div> -->
-        <div class="card-wrapper">
-          <div>
-           <%= image_tag "https://kitt.lewagon.com/placeholder/users/krokrob", class: "avatar-card-position", alt: "avatar-square" %>
-          </div>
-
-          <div class="card-position">
-            <!-- <li> -->
-              <p><%= position.position_name.name %>
-              <% if position.user.nil? %>
-                <% if @applied.include?(position.id) %>
-                  <strong>ALREADY APPLIED</strong>
-                <% else %>
-                  <strong> <%= link_to 'APPLY', team_pending_applications_path(@team, position_id:position.id), method: :post %> </strong>
-                <% end %>
-              </p>
-                <p>Position still empty </p>
-              <% else %>
-                <p><%= position.user.email %></p>
-                <% if @team.captain?(current_user) %>
-                  <%= link_to 'Remove Player', team_position_path(@team, id:position.id), method: :put %>
-                <% end %>
-              <% end %>
-                <% if @team.captain?(current_user) %>
-                  <p><%= link_to "Delete position", team_position_path(@team.id, position.id),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %></p>
-                <% end %>
-            <!-- </li> -->
-          </div>
-        </div>
-      <!-- </div> -->
-    <% end %>
-</div>
     <h1>card 2</h1>
   </div>
   <div class="chat">
     <div><%= link_to "CREATE A CHAT ROOM", new_team_room_path(@team.id), class: "btn btn-dark btn-lrg" %></div>
   </div>
+    <% if @rooms.present? %>
+    <nav class="nav flex-column">
+      <ol>
+      <% @rooms.each do |room| %>
+        <li><%= link_to room.name, team_room_path(@team, room), class: "nav-link room-nav-link" %>
+         <%= link_to "Delete room", team_room_path(@team.id, room.id),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %></li>
+      <% end %>
+      </ol>
+    </nav>
+  <% else %>
+    <div class="text-muted">
+      Create your first team chat!
+    </div>
+  <% end %>
 </div>
 
 
@@ -168,7 +134,7 @@
   <!-- </ul> -->
 
 <%= link_to "Back to teams", teams_path %>
-<br>
+<!-- <br>
 <br>
 <div class="chat">
   <div><%= link_to "Create a chat room", new_team_room_path(@team.id) %></div>
@@ -188,4 +154,4 @@
   <div class="text-muted">
     Create your first team chat!
   </div>
-<% end %>
+<% end %> -->
