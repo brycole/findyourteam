@@ -1,5 +1,13 @@
 // Specific CSS for your home-page
 
+.find-logo {
+  position: fixed;
+  top: 2vh;
+  left: 40px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  z-index: 999;
+}
 
 .home_video {
   width: 100vw;
@@ -52,6 +60,12 @@ h1.home {
   }
 }
 
+.select-your-game {
+  color: white;
+  font-family: 'Roboto';
+  font-weight: bolder;
+}
+
 .game-selector-opaque {
   position: absolute;
   top: 0;
@@ -64,40 +78,62 @@ h1.home {
 #dota2 {
   background-image: url(https://cdn.mos.cms.futurecdn.net/G2VQ2CL9j4w6Jv5z3QwjuN.jpg);
   background-size: 400px;
-  border: 3px solid #4c57ee;
+  border:2px solid #4c57ee;
 }
 
 #csgo {
   background-image: url(https://media.threatpost.com/wp-content/uploads/sites/103/2019/03/14151149/Counterstrike.jpg);
   background-size: 400px;
-  border: 3px solid #966c43;
+  border:2px solid #966c43;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #overwatch {
   background-image: url(https://specials-images.forbesimg.com/imageserve/5db6e4a3616a45000704ba97/960x0.jpg?fit=scale);
   background-size: 400px;
-  border: 3px solid purple;
+  border:2px solid purple;
 }
 
 // CSS for the home page right hand side
 
+#select-overwatch {
+  border: 2px solid purple;
+}
+
+#select-cs {
+  border: 2px solid #966c43;
+}
+
+#select-dota2 {
+  border: 2px solid #4c57ee;
+}
+
 .select-this-game {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(1, 1, 1, 0.7);
   display: none;
-  padding-right: 40px;
+  padding: 20px;
+  border-radius: 8px;
+  margin-right: 40px;
   width: 540px;
-  height: auto;
+  height: 400px;
   position: absolute;
   right: 0px;
-  top: 30vh;
+  top: 50%;
+  transform: translateY(-50%);
   color: white;
   text-shadow: 1px 1px black;
   h1 {
-    font-family: 'Arial';
+    font-family: 'Roboto', sans-serif;
     font-weight: bolder;
     font-size: 32px;
   }
   p {
     font-weight: bolder;
+    font-family: 'Raleway', sans-serif;
   }
   a {
     text-decoration: none;

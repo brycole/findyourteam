@@ -1,13 +1,16 @@
-
+<div class="find-logo">
+  <%= image_tag "find_logo_overall_transparent.png", height: 100, width: 240%>
+</div>
 <div class="game-selector-opaque">
 </div>
 <div class="game-selector-mask">
   <div class="all-games">
+    <div class="select-your-game"> Select your game </div>
     <div class="games-selector" id="dota2">
       <%= image_tag 'dota2_red.png', height: 100, width: 180, crop: :fill %>
     </div>
     <div class="games-selector" id="csgo">
-      <%= image_tag 'csgo_white.png', height: 100, width: 300, crop: :fill %>
+      <%= image_tag 'csgo_white.png', height: 80, width: 300, crop: :fill %>
     </div>
     <div class="games-selector" id="overwatch">
       <%= image_tag 'overwatch.png', height: 100, width: 200, crop: :fill %>
@@ -15,23 +18,21 @@
   </div>
 </div>
 <div class="game-description">
-  <div class="select-this-game" id="no-game-selected">
-    <h1>Please select a game</h1>
-  </div>
   <div class="select-this-game" id="select-cs">
     <h1>Counter-Strike: Global Offensive</h1>
-    <p>The classic first-person shooter, which has withstood the test of time. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ... The first word, “Lorem,” isn't even a word; instead it's a piece of the word “dolorem,” meaning pain, suffering, or sorrow.</p>
-    <p><%= link_to "Explore all CS:GO teams and players", set_user_team_path(game: Game.find_by(title: "CS: GO").id), method: :post %></p>
+    <p>Counter-Strike: Global Offensive (CS:GO) expands upon the team-based first person shooter gameplay the original Counter-Strike pioneered when it launched in 1999. Two teams compete in multiple rounds of objective-based game modes with the goal of winning enough rounds to win the match. <br><br> CS:GO features new maps, characters, and weapons and delivers updated versions of the classic Counter-Strike maps like Dust, Inferno, Nuke, Train, and more.</p>
+    <p><%= link_to "Find your CS:GO team!", set_user_team_path(game: Game.find_by(title: "CS: GO").id), method: :post %></p>
   </div>
   <div class="select-this-game" id="select-overwatch">
     <h1>Overwatch 2</h1>
-    <p>An amazing new game from Blizzard that takes FPS to a new dimension. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ... The first word, “Lorem,” isn't even a word; instead it's a piece of the word “dolorem,” meaning pain, suffering, or sorrow.</p>
-    <p><%= link_to "Explore all Overwatch 2 teams and players", set_user_team_path(game: Game.find_by(title: "Overwatch").id), method: :post %></p>
+    <p>Overwatch is an online team-based game generally played as a first-person shooter. The game features several different game modes, principally designed around squad-based combat with two opposing teams of six players each. <br><br> The game assigns players into two teams of six, with each player selecting from a roster of over 30 characters, known as "heroes", each with a unique style of play that is divided into three general roles that fit their purpose.</p>
+    <p><%= link_to "Find your Overwatch2 team!", set_user_team_path(game: Game.find_by(title: "Overwatch").id), method: :post %></p>
   </div>
   <div class="select-this-game" id="select-dota2">
     <h1>Defence Of The Ancients 2</h1>
-    <p>Defence of the ancient is the greatest MOBA game of all times and by far the one with the biggest prize funds. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ... The first word, “Lorem,” isn't even a word; instead it's a piece of the word “dolorem,” meaning pain, suffering, or sorrow.</p>
-    <p><%= link_to "Explore all Dota2 teams and players", set_user_team_path(game: Game.find_by(title: "Dota2").id), method: :post %></p>
+    <p>Dota 2 is a multiplayer online battle arena (MOBA) video game in which two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the "Ancient", whilst defending their own. <br><br>
+    The game is controlled using standard real-time strategy controls, and is presented on a single map in a three-dimensional isometric perspective. The player can choose from a variety of playable characters, split in different roles.</p>
+    <p><%= link_to "Find your Dota2 team!", set_user_team_path(game: Game.find_by(title: "Dota2").id), method: :post %></p>
   </div>
   <div class="home-video-wrapper" id="home-video-wrapper-id">
     <%= video_tag @video, autoplay: true, loop: true, muted: true, controls: false, class: "home_video" %>

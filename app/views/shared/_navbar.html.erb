@@ -3,9 +3,9 @@
   <div class="left-logo">
     <%= link_to root_path, class: "navbar-brand" do %>
       <% if current_user.nil? || current_user.show_game == "1" %>
-          <%= image_tag "dota2logo.png", height: 55, width: 151, crop: :fill %>
+          <%= image_tag "find_logo_dota2_transparent.png", height: 65, width: 151, crop: :fill %>
         <% elsif current_user.show_game == "2" %>
-          <%= image_tag "csgologo.png" %>
+          <%= image_tag "find_logo_csgo_transparent.png", height: 65, width: 151, crop: :fill %>
       <% end %>
     <% end %>
   </div>
