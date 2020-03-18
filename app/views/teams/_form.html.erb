@@ -6,6 +6,7 @@
         <%= f.hidden_field :game_id, value: params["game_id"] %>
         <%= f.hidden_field :user_id, value: current_user.id  %>
         <%= f.input :name %>
+        <%= f.input :photo, as: :file %>
         <%= f.submit "Submit", class: "btn btn-outline-dark" %> <%= link_to "Back to teams", teams_path, class: "btn btn-outline-dark" %>
       <% end %>
     </div>

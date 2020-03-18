@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
 
 games = [{ title: "Dota2", genre: "MOBA" },
          { title: "CS: GO", genre: "FPS" },
@@ -111,7 +105,7 @@ User.create!(
 User.create!(
   email: 'atsede@gmail.com',
   password: 'password',
-  nickname: 'kill_bill',
+  nickname: 'KillBill',
   show_game: dota2,
   game: dota2,
   rank: Rank.find_by(id: 12),
@@ -129,7 +123,7 @@ User.create!(
 User.create!(
   email: 'sarah@gmail.com',
   password: 'password',
-  nickname: 's5',
+  nickname: 'HeatoN',
   show_game: dota2,
   game: csgo,
   rank: Rank.find_by(id: 24),
@@ -138,7 +132,7 @@ User.create!(
 User.create!(
   email: 'scott@gmail.com',
   password: 'password',
-  nickname: 'Ceb',
+  nickname: 'Potter',
   show_game: csgo,
   game: csgo,
   rank: Rank.find_by(id: 54),
@@ -156,7 +150,7 @@ User.create!(
 User.create!(
   email: 'beyonce@gmail.com',
   password: 'password',
-  nickname: 'NBK',
+  nickname: 'Insomnia',
   show_game: dota2,
   game: dota2,
   rank: Rank.find_by(id: 4),
@@ -165,7 +159,7 @@ User.create!(
 User.create!(
   email: 'tupac@gmail.com',
   password: 'password',
-  nickname: 'QO',
+  nickname: 'Grubby',
   show_game: csgo,
   game: csgo,
   rank: Rank.find_by(id: 42),
@@ -173,42 +167,151 @@ User.create!(
 
 puts 'Users created'
 
-
 puts 'Creating Teams'
 
-Team.create!(
-  name: 'Team Secret',
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528718/logos_for_seeds/chaos_pgwdak.png')
+team1 = Team.new(
+  name: 'Chaos eSports',
   game_id: 1,
-  user_id: 1)
+  user_id: 2)
+team1.photo.attach(io: team_logo, filename: 'chaos.png', content_type: 'image/png')
+team1.save
 puts "team 1 created."
 
-Team.create!(
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528718/logos_for_seeds/eg_logo_idaeju.png')
+team2 = Team.new(
   name: 'Evil Geniuses',
-  game_id: 2,
+  game_id: 1,
   user_id: 2)
+team2.photo.attach(io: team_logo, filename: 'Eagle.png', content_type: 'image/png')
+team2.save
 puts "team 2 created."
 
-
-Team.create!(
-  name: 'Vici Gaming',
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528718/logos_for_seeds/infamous_bqoi88.png')
+team3 = Team.new(
+  name: 'Team Infamous',
   game_id: 1,
-  user_id: 3)
+  user_id: 2)
+team3.photo.attach(io: team_logo, filename: 'infamous.png', content_type: 'image/png')
+team3.save
 puts "team 3 created."
 
-
-Team.create!(
-  name: 'PSG.LGD',
-  game_id: 2,
-  user_id: 4)
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528718/logos_for_seeds/fnatic_hfxb15.png')
+team4 = Team.new(
+  name: 'fnatic',
+  game_id: 1,
+  user_id: 2)
+team4.photo.attach(io: team_logo, filename: 'fnatic.png', content_type: 'image/png')
+team4.save
 puts "team 4 created."
 
-
-Team.create!(
-  name: 'Virtus.pro',
-  game_id: 2,
-  user_id: 5)
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528718/logos_for_seeds/alliance_logo_tseyw7.png')
+team5 = Team.new(
+  name: 'Alliance',
+  game_id: 1,
+  user_id: 2)
+team5.photo.attach(io: team_logo, filename: 'alliance.png', content_type: 'image/png')
+team5.save
 puts "team 5 created."
 
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528718/logos_for_seeds/navi_logo_zgsc51.png')
+team6 = Team.new(
+  name: 'Natus Vincere',
+  game_id: 1,
+  user_id: 2)
+team6.photo.attach(io: team_logo, filename: 'navi.png', content_type: 'image/png')
+team6.save
+puts "team 6 created."
+
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528718/logos_for_seeds/newbee_logo_wrlrol.png')
+team7 = Team.new(
+  name: 'Team Newbee',
+  game_id: 1,
+  user_id: 2)
+team7.photo.attach(io: team_logo, filename: 'newbee.png', content_type: 'image/png')
+team7.save
+puts "team 7 created."
+
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528718/logos_for_seeds/nip_logo_gec1ws.png')
+team8 = Team.new(
+  name: 'Ninjas in Pyjamas',
+  game_id: 1,
+  user_id: 2)
+team8.photo.attach(io: team_logo, filename: 'nip.png', content_type: 'image/png')
+team8.save
+puts "team 8 created."
+
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584529537/logos_for_seeds/liquid_hfbtns.png')
+team9 = Team.new(
+  name: 'Team Liquid',
+  game_id: 1,
+  user_id: 2)
+team9.photo.attach(io: team_logo, filename: 'liquid.png', content_type: 'image/png')
+team9.save
+puts "team 9 created."
+
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528718/logos_for_seeds/keen_logo_ugbzs4.png')
+team10 = Team.new(
+  name: 'Team Keen',
+  game_id: 1,
+  user_id: 2)
+team10.photo.attach(io: team_logo, filename: 'keen.png', content_type: 'image/png')
+team10.save
+puts "team 10 created."
+
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528719/logos_for_seeds/predator_logo_w9du2i.png')
+team11 = Team.new(
+  name: 'Team Predator',
+  game_id: 2,
+  user_id: 2)
+team11.photo.attach(io: team_logo, filename: 'predator.png', content_type: 'image/png')
+team11.save
+puts "team 11 created."
+
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528719/logos_for_seeds/virtuspro_logo_idp1bf.png')
+team12 = Team.new(
+  name: 'Virtus.pro',
+  game_id: 1,
+  user_id: 2)
+team12.photo.attach(io: team_logo, filename: 'virtus_pro.png', content_type: 'image/png')
+team12.save
+puts "team 12 created."
+
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528718/logos_for_seeds/mineski_logo_uwia3d.png')
+team13 = Team.new(
+  name: 'Team Mineski',
+  game_id: 2,
+  user_id: 2)
+team13.photo.attach(io: team_logo, filename: 'mineski.png', content_type: 'image/png')
+team13.save
+puts "team 13 created."
+
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528719/logos_for_seeds/psg_logo_mhv1m3.png')
+team14 = Team.new(
+  name: 'Team RNG',
+  game_id: 2,
+  user_id: 2)
+team14.photo.attach(io: team_logo, filename: 'rng.png', content_type: 'image/png')
+team14.save
+puts "team 14 created."
+
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528719/logos_for_seeds/vici_logo_trruzf.png')
+team15 = Team.new(
+  name: 'Vici Gaming',
+  game_id: 2,
+  user_id: 2)
+team15.photo.attach(io: team_logo, filename: 'vici.png', content_type: 'image/png')
+team15.save
+puts "team 15 created."
+
+team_logo = URI.open('https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584528719/logos_for_seeds/og_team_okwz3f.png')
+team16 = Team.new(
+  name: 'Team OG',
+  game_id: 2,
+  user_id: 2)
+team16.photo.attach(io: team_logo, filename: 'team_og.png', content_type: 'image/png')
+team16.save
+puts "team 16 created."
 
 puts 'Teams created'
 

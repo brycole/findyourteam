@@ -1,6 +1,5 @@
 class PositionsController < ApplicationController
   before_action :set_team, only: %i[index new create update]
-  skip_before_action :authenticate_user!
 
   def index
     @rooms = Room.where(team_id: @team.id)
