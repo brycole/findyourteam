@@ -24,8 +24,14 @@
         <%= link_to "Your Profile", player_path(current_user), class: "dropdown-item" %>
         <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       </div>
+    <% else %>
+      <div class="d-flex justify-content-center">
 
-      <ul class="nav nav-tabs d-flex <%= current_user.show_game == "1" ? "dota" : "csgo" %> ">
+       <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+
+      </div>
+    <% end %>
+      <ul class="nav nav-tabs d-flex <%= current_user.nil? ? "dota" : current_user.show_game == "1" ? "dota" : "csgo" %> ">
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
@@ -42,14 +48,7 @@
           <%= link_to "Players", players_path, class: "nav-link" %>
         </li>
       </ul>
-    <% else %>
-    <div class="d-flex">
 
-      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-
-    </div>
-
-    <% end %>
   </div>
 
   <!-- right section -->

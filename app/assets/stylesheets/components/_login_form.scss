@@ -1,8 +1,8 @@
 .form-login {
-  background: white;
+  background: rgba(1, 1, 1, 0.5);
   padding: 10px 20px;
   margin-top: 50px;
-  border-radius: 3px;
+  border-radius: 8px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 
   h2 {
@@ -15,5 +15,18 @@
   .btn {
     width: 100%;
     margin-bottom: 20px
+  }
+}
+
+.login-button-custom {
+  input {
+    color: white;
+    border: white 1px solid;
+    border-radius: 4px;
+    text-decoration: none;
+    &:hover {
+      color:grey;
+      border: grey 1px solid;
+    }
   }
 }

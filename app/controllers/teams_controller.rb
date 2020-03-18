@@ -1,9 +1,13 @@
 class TeamsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :set_team, only: %i[show edit destroy update]
 
   def index
-    @teams = Team.where(game_id: current_user.show_game)
+    if current_user.nil?
+      @teams = Team.all
+    else
+      @teams = Team.where(game_id: current_user.show_game)
+    end
   end
 
   def set_user_team
@@ -52,6 +56,6 @@ class TeamsController < ApplicationController
   end
 
   def team_params
-    params.require(:team).permit(:name, :user_id, :game_id)
+    params.require(:team).permit(:name, :user_id, :game_id, :photo)
   end
 end
