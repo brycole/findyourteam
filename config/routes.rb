@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   post 'captain_approve', to: 'pending_applications#captain_approve'
   post 'player_approve', to: 'pending_applications#player_approve'
 
+  post 'create_default_positions', to: 'positions#create_default_positions'
+  post 'delete_all_positions', to: 'positions#delete_all_positions'
+
   get 'ranks', to: 'players#ranks'
 
   get 'create_invitation', to: 'pending_applications#create_invitation'
