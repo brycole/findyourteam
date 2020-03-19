@@ -33,19 +33,19 @@
     <% end %>
       <ul class="nav nav-tabs d-flex <%= current_user.nil? ? "dota" : current_user.show_game == "1" ? "dota" : "csgo" %> ">
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link" %>
+          <%= link_to "Home", root_path, class: "nav-link #{ 'active-tab' if controller_name == 'pages' && action_name == 'home'}" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Teams", teams_path, class: "nav-link" %>
+          <%= link_to "Teams", teams_path, class: "nav-link #{ 'active-tab' if controller_name == 'teams' && action_name == 'index'}" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Players", players_path, class: "nav-link" %>
+          <%= link_to "Players", players_path, class: "nav-link #{ 'active-tab' if controller_name == 'players' && action_name == 'index'}" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Players", players_path, class: "nav-link" %>
+          <%= link_to "Players", players_path, class: "nav-link #{ 'active-tab' if controller_name == 'players' && action_name == 'index'}" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Players", players_path, class: "nav-link" %>
+          <%= link_to "Players", players_path, class: "nav-link #{ 'active-tab' if controller_name == 'players' && action_name == 'index'}" %>
         </li>
       </ul>
 
