@@ -1,8 +1,8 @@
 <div class="team-cards">
-  <% @teams.each do|team| %>
+  <% @teams.each do |team| %>
   <!-- <a href="<%= team_positions_path(team) %>"> --></a>
     <%= link_to team_positions_path(team) do %>
-      <div class="team-card" >
+      <div class="team-card <%= current_user.nil? ? "team-card-dota" : current_user.show_game == "1" ? "team-card-dota" : "team-card-csgo" %> " style="background-image: url('<%= cl_image_path team.photo.key %>')">
         <div class="team-player-roster-card">
           <% team.positions.each do |position| %>
           <h2><%= position.position_name.name %></h2>

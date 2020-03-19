@@ -1,36 +1,67 @@
+<div class="d-flex align-items-center py-3">
+      <div class="category">
+      <div class="p-2 bg-gradient-dark mr-5">FILTER BY</div>
+      <div class="p-2 bg-gradient-dark mr-5">POSITION</div>
+      <div class="p-2 bg-gradient-dark mr-5">RANK</div>
+      <div class="p-2 bg-gradient-dark mr-5">SEARCH</div>
 
 
-<div>
-  <table class="table table-dark table-hover table-borderless table-sm">
-    <thead>
-      <tr>
-        <th scope="col">Appl Number</th>
-        <th scope="col">Position</th>
-        <th scope="col">User</th>
-        <th scope="col">User Approval</th>
-        <th scope="col">Captain Approval</th>
-        <th scope="col">Approve (Captain)</th>
-        <th scope="col">Approve (Player)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @pending_applications.each do |application| %>
-        <tr>
-          <td><%= application.id %></td>
-          <td><%= application.position.position_name.name %></td>
-          <td><%= application.user.email %></td>
-          <td><%= application.user_approval %></td>
-          <td><%= application.owner_approval %></td>
-          <% if @is_captain %>
-            <% if application.owner_approval == false %>
-              <td><%= button_to 'Approve', captain_approve_path(team_id:@team.id, id:application.id), method: :post %></td>
-            <% end %>
-          <% elsif application.user_approval == false %>
-            <td>PLAYER APPROVE</td>
-          <% end %>
-        </tr>
+      <%= form_tag players_path, method: :get, class: "form-inline" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "ENTER NICKNAME",
+          autocomplete: "off"
+        %>
       <% end %>
-    </tbody>
-  </table>
-  <h4><%= link_to "Back to Team", team_positions_path(params[:team_id]) %></h4>
+      </div>
+    </div>
+  <div class="cards-main-player">
+
+    <div class="cards-player" >
+      <% @pending_applications.each do|pending_application| %>
+        <div class="card-wrapper-player">
+          <div class="card-wrapper-player-flex">
+            <%= link_to player_path(pending_application.user) do %>
+              <div class="avatar-square-player">
+                <% if pending_application.user.photo.attached? %>
+                  <%= cl_image_tag pending_application.user.photo.key, height: 150, width: 150 %>
+                <% else %>
+                  <%= image_tag "avatar_logo.jpg", height: 150, width: 150 %>
+                <% end %>
+              </div>
+            <% end %>
+            <div class="card-position">
+              <h3><%= pending_application.user.nickname %></h3>
+              <p><%= pending_application.position.position_name.name %></p>
+              <div class="card-buttons">
+                <% if @is_captain %>
+                  <% if pending_application.owner_approval == false && pending_application.user_approval %>
+                    <%= link_to captain_approve_path(team_id:@team.id, id:pending_application.id), method: :post do %>
+                      <div class="player-button-orange">APPROVE</div>
+                    <% end %>
+                    <%= link_to pending_application_path(pending_application), method: :delete do %>
+                      <div class="player-button-red">REJECT</div>
+                    <% end %>
+                  <% elsif pending_application.owner_approval && !pending_application.user_approval %>
+                    <div class="player-button-green">INVITED</div>
+                    <%= link_to pending_application_path(pending_application), method: :delete do %>
+                      <div class="player-button-red">DELETE</div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <div class="card-position-image">
+              <% if pending_application.user.rank.game.id == 1 %>
+                <%= image_tag pending_application.user.rank.image, height: 50, width: 50, crop: :fill %>
+              <% else %>
+                <%= image_tag pending_application.user.rank.image, height: 25, width: 50, crop: :fill %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

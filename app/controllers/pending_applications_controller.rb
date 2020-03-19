@@ -66,6 +66,7 @@ class PendingApplicationsController < ApplicationController
 
   def destroy
     @pending_application.destroy
+    redirect_to request.referrer if params[:action] == "destroy"
   end
 
   def create_invitation

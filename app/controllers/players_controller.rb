@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def show
     @player = User.find(params[:id])
     @pending_applications = PendingApplication.where(user_id: @player.id)
