@@ -22,19 +22,22 @@
 .top-right{
   width: 200px;
 }
-.top-center {
-  // width: 200px;
-  // height: 300px;
-}
+
 
 .team-name {
   text-align: center;
 }
 
-.card-container{
-  display: flex;
+.card-wrapper{
   justify-content: space-around;
   margin: 15px;
+}
+
+.position-card{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  justify-content: center;
 }
 
 .chat{
