@@ -1,13 +1,13 @@
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      <div class="form-edit">
+      <div class="form-edit my-form">
       <h3><%= title %></h3>
         <%= simple_form_for(@team) do |f| %>
         <%= f.hidden_field :game_id, value: params["game_id"] %>
         <%= f.hidden_field :user_id, value: current_user.id  %>
         <%= f.input :name %>
-        <%= f.input :photo, as: :file %>
-        <%= f.submit "Submit", class: "btn btn-outline-dark" %> <%= link_to "Back to teams", teams_path, class: "btn btn-outline-dark" %>
+        <%= f.input :photo, as: :file%>
+        <%= f.submit "Submit", class: "btn btn-dark" %> <%= link_to "Back to teams", teams_path, class: "btn btn-dark" %>
       <% end %>
     </div>
    </div>
