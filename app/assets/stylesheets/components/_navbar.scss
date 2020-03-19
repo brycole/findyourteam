@@ -36,11 +36,21 @@
 .nav-tabs{
   margin-top: 15px;
   margin-bottom: 0;
+  border-bottom: 1px solid transparent !important;
 }
 
 
 .nav-tabs .nav-link{
   color: white;
+  margin-right: 14px;
+  margin-left: 14px;
+  &:hover {
+    background-color: black;
+    border-bottom: 1px solid transparent !important;
+    background-image: linear-gradient(black, black), linear-gradient(to top, black, transparent);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+  }
 }
 
 .dota {
@@ -59,6 +69,14 @@
   font-style: regular;
   font-size: 16px;
   line-height: 100%;
+}
+
+.text-center-navbar {
+    border-bottom: 5px solid rgba(255, 255, 255, 0.2);
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
