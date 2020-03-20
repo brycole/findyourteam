@@ -39,6 +39,12 @@
   border-bottom: 1px solid transparent !important;
 }
 
+.nav-tabs .active-tab{
+  background-color: black;
+  border-top-color: white;
+  border-left-color: white;
+  border-right-color: white;
+}
 
 .nav-tabs .nav-link{
   color: white;
@@ -78,5 +84,6 @@
     flex-direction: column;
     align-items: center;
 }
+
 
 

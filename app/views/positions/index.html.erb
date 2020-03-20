@@ -5,11 +5,19 @@
       <% if @team.captain?(current_user) %>
         <h4 class="player-button-orange-large"> <%= link_to "CREATE A POSITION", new_team_position_path(@team.id) %> </h4>
         <br>
-        <h4 class="player-button-orange-large"> <%= link_to "REVIEW APPLICATIONS", team_pending_applications_path(@team) %> </h4>
+        <h4 class="player-button-orange btn"> <%= link_to "REVIEW APPLICATIONS", team_pending_applications_path(@team) %> </h4>
+
+        <%= link_to create_default_positions_path(team_id: @team.id), method: :post do %>
+          <div class="player-button-orange-large">Create default positions</div>
+        <% end %>
+
+        <%= link_to delete_all_positions_path(team_id: @team.id), method: :post do %>
+          <div class="player-button-red-large">Delete all positions</div>
+        <% end %>
+
       <% else %>
       <% end %>
     </div>
-
     <div class="top-center">
       <%= cl_image_tag @team.photo.key, height: 200, width: 180, crop: :fill, class: "team-logo", alt: "team logo" %>
     </div>
