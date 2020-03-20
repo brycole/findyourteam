@@ -66,8 +66,7 @@
   top: 40px;
 }
 
-.player-button-orange-large {
-  @extend .border-gradient;
+.large-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,10 +75,33 @@
   height: 55px;
   margin-right: 40px;
   padding: 0px;
+}
+
+.player-button-orange-large {
+  @extend .border-gradient;
+  @extend .large-button;
 
   background-image: linear-gradient(#C6441B, #C6441B), // this will be the background color of the element
                     linear-gradient(to bottom, white, transparent); // this will be the linear-gradient of the border you can use to top to reverse direction
 }
+
+
+.player-button-blue-large {
+  @extend .border-gradient;
+  @extend .large-button;
+
+  background-image: linear-gradient(#232b56, #232b56), // this will be the background color of the element
+                    linear-gradient(to bottom, white, transparent); // this will be the linear-gradient of the border you can use to top to reverse direction
+}
+
+.player-button-red-large {
+  @extend .border-gradient;
+  @extend .large-button;
+
+  background-image: linear-gradient(#780002, #780002), // this will be the background color of the element
+                    linear-gradient(to bottom, white, transparent); // this will be the linear-gradient of the border you can use to top to reverse direction
+}
+
 
 .invitation-card {
   position: relative;
