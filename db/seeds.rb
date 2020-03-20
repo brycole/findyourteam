@@ -111,27 +111,14 @@ User.create!(
   rank: Rank.find_by(id: 12),
   position_name_id: dota2.position_names.first.id)
 
-40.times do
-  User.new(
-    email: Faker::Name.unique.first_name + '@gmail.com',
-    password: 'password',
-    nickname: Faker::Games::Heroes.unique.name
-    show_game: dota2
-    game: dota2
-#   cooking_time = (Faker::Number.number(digits: 2)).to_s + "min"
-#   description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-#   input_hash = {title: title, category: category, price: price, cooking_time: cooking_time, description: description}
-#   meal = Meal.new(input_hash)
-#   meal.user = user1
-
-#   photo = "https://source.unsplash.com/random/?dinner " + title
-#   file = URI.open(photo)
-#   meal.photo.attach(io: file, filename: 'test.jpeg', content_type: 'image/png')
-
-#   puts "Adding address...#{post_code[0]}"
-#   meal.address = post_code.slice!(0)
-#   meal.save
-end
+# 40.times do
+#   User.new(
+#     email: Faker::Name.unique.first_name + '@gmail.com',
+#     password: 'password',
+#     nickname: Faker::Games::Heroes.unique.name
+#     show_game: dota2
+#     game: dota2
+# end
 
 puts 'Users created'
 
