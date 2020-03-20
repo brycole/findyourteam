@@ -186,15 +186,12 @@
 }
 
 .avatar-square-player {
-  @extend .border-gradient;
   border-radius: 8px;
   img {
     border-radius: 0 0 8px 8px;
   }
   display: flex;
   align-items: center;
-  background-image: linear-gradient(#FEFEFE, #FEFEFE),
-                    linear-gradient(to top, white, transparent);
 }
 
 .card-position-player{
@@ -237,7 +234,7 @@
   .card-position-image {
     position: absolute;
     top: 20;
-    right: 12;
+    right: 120;
   }
 }
 
@@ -469,4 +466,48 @@ img.avatar-large {
 }
 .team-card:hover .team-region-card {
   visibility :hidden;
+}
+
+
+.team-positions-index-button {
+  @extend .border-gradient;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 200px;
+  height: 40px;
+  margin-right: 40px;
+  margin-bottom: 8px;
+  padding: 0px;
+  font-size: 16px;
+  text-decoration: none;
+  background-image: linear-gradient(#C6441B, #C6441B),
+                    linear-gradient(to top, white, transparent);
+  a {
+    text-decoration: none;
+  }
+  &:hover {
+    background-image: linear-gradient(black, black),
+                    linear-gradient(to top, white, transparent);
+  }
+}
+
+.position-empty-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.top-left,
+.top-center,
+.top-right {
+  width: 300px;
+}
+
+.top-left {
+  padding-left: 40px;
 }
