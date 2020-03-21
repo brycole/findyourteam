@@ -111,14 +111,31 @@ User.create!(
   rank: Rank.find_by(id: 12),
   position_name_id: dota2.position_names.first.id)
 
-# 40.times do
-#   User.new(
-#     email: Faker::Name.unique.first_name + '@gmail.com',
-#     password: 'password',
-#     nickname: Faker::Games::Heroes.unique.name
-#     show_game: dota2
-#     game: dota2
-# end
+#dota 2 users
+40.times do
+  User.create!(
+    email: Faker::Name.unique.first_name + '@gmail.com',
+    password: 'password',
+    nickname: Faker::Games::Heroes.unique.name,
+    show_game: "1",
+    game: dota2,
+    rank: Rank.find_by(id: rand(1..38)),
+    position_name_id: dota2.position_names[rand(0..4)].id
+    )
+end
+
+#cs go users
+40.times do
+  User.create!(
+    email: Faker::Name.unique.first_name + '@gmail.com',
+    password: 'password',
+    nickname: Faker::Games::Fallout.character,
+    show_game: "2",
+    game: csgo,
+    rank: Rank.where(game_id: 2)[rand(0..17)],
+    position_name_id: dota2.position_names[rand(0..4)].id
+    )
+end
 
 puts 'Users created'
 
