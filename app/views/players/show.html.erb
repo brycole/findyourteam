@@ -1,7 +1,7 @@
 <div class="player-wrapper-avatar">
   <div class="player-avatar-big">
   <% if @player.photo.attached? %>
-    <%= cl_image_tag @player.photo.key, height: 195, width: 195, crop: :fill %>
+    <%= cl_image_tag @player.photo.key, height: 195, width: 195, crop: :thumb, gravity: :face %>
     <% else %>
     <%= image_tag "avatar_logo.jpg" , height: 195, width: 195, crop: :fill %>
   <% end %>
