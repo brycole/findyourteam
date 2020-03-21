@@ -73,7 +73,7 @@ end
 
 puts 'Creating users'
 
-User.create!(
+vladi = User.new(
   email: 'vladi@gmail.com',
   password: 'password',
   nickname: 'Destroyer',
@@ -81,10 +81,16 @@ User.create!(
   game: dota2,
   rank: Rank.find_by(id: 28),
   position_name_id: dota2.position_names.first.id)
+pic_url = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/vladi_pkbwu3.jpg"
+avatar = URI.open(pic_url)
+vladi.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
+vladi.save
+
+puts "vladi profile created."
 
 rank = Rank.find_by(id: 28)
 
-User.create!(
+rachid = User.new(
   email: 'rachid@gmail.com',
   password: 'password',
   nickname: 'Fly',
@@ -92,8 +98,14 @@ User.create!(
   game: dota2,
   rank: Rank.find_by(id: 16),
   position_name_id: dota2.position_names.first.id)
+pic_url2 = "https://source.unsplash.com/random/?face"
+avatar2 = URI.open(pic_url2)
+rachid.photo.attach(io: avatar2, filename: 'random2.jpeg', content_type: 'image/png')
+rachid.save
 
-User.create!(
+puts "rachid profile created."
+
+bryan = User.new(
   email: 'bryan@gmail.com',
   password: 'password',
   nickname: 'Miracle',
@@ -101,8 +113,14 @@ User.create!(
   game: dota2,
   rank: Rank.find_by(id: 38),
   position_name_id: dota2.position_names.first.id)
+pic_url3 = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/bryan_zj5abm.png"
+avatar3 = URI.open(pic_url3)
+bryan.photo.attach(io: avatar3, filename: 'random3.jpeg', content_type: 'image/png')
+bryan.save
 
-User.create!(
+puts "bryan profile created."
+
+atsede = User.new(
   email: 'atsede@gmail.com',
   password: 'password',
   nickname: 'KillBill',
@@ -110,10 +128,16 @@ User.create!(
   game: dota2,
   rank: Rank.find_by(id: 12),
   position_name_id: dota2.position_names.first.id)
-
+pic_url4 = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/atsede_wdvqbl.jpg"
+avatar4 = URI.open(pic_url4)
+atsede.photo.attach(io: avatar4, filename: 'random4.jpeg', content_type: 'image/png')
+atsede.save
 #dota 2 users
+
+puts "atsede profile created."
+n = 0
 40.times do
-  User.create!(
+  user = User.new(
     email: Faker::Name.unique.first_name + '@gmail.com',
     password: 'password',
     nickname: Faker::Games::Heroes.unique.name,
@@ -122,11 +146,19 @@ User.create!(
     rank: Rank.find_by(id: rand(1..38)),
     position_name_id: dota2.position_names[rand(0..4)].id
     )
+    pic_url = "https://source.unsplash.com/random/?face"
+    avatar = URI.open(pic_url)
+    user.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
+    user.save
+    sleep(1)
+    n+=1
+    puts "user #{n} created"
 end
 
 #cs go users
+
 40.times do
-  User.create!(
+  user = User.new(
     email: Faker::Name.unique.first_name + '@gmail.com',
     password: 'password',
     nickname: Faker::Games::Fallout.character,
@@ -135,6 +167,13 @@ end
     rank: Rank.where(game_id: 2)[rand(0..17)],
     position_name_id: csgo.position_names[rand(0..4)].id
     )
+    pic_url = "https://source.unsplash.com/random/?face"
+    avatar = URI.open(pic_url)
+    user.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
+    user.save
+    sleep(1)
+    n+=1
+    puts "user #{n} created"
 end
 
 puts 'Users created'
@@ -344,24 +383,3 @@ puts "Adding users to existing positions..."
     end
   end
 end
-
-# 5.times do
-#   title = Faker::Food.dish
-#   title.gsub!(/[^[:ascii:]]/, "")
-#   category = Faker::Nation.language
-#   price = Faker::Number.number(digits: 2)
-#   cooking_time = (Faker::Number.number(digits: 2)).to_s + "min"
-#   description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-#   input_hash = {title: title, category: category, price: price, cooking_time: cooking_time, description: description}
-#   meal = Meal.new(input_hash)
-#   meal.user = user1
-
-#   photo = "https://source.unsplash.com/random/?dinner " + title
-#   file = URI.open(photo)
-#   meal.photo.attach(io: file, filename: 'test.jpeg', content_type: 'image/png')
-
-#   puts "Adding address...#{post_code[0]}"
-#   meal.address = post_code.slice!(0)
-#   meal.save
-#   sleep(2)
-# end
