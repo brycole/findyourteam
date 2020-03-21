@@ -46,6 +46,10 @@
   margin: 40px;
 
   @extend .border-gradient;
+
+  img {
+    border-radius: 8px;
+  }
 }
 
 .player-stats {
@@ -186,9 +190,10 @@
 }
 
 .avatar-square-player {
+  @extend .border-gradient;
   border-radius: 8px;
   img {
-    border-radius: 0 0 8px 8px;
+    border-radius: 8px;
   }
   display: flex;
   align-items: center;
