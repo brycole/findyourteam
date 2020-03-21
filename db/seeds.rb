@@ -150,7 +150,7 @@ n = 0
     avatar = URI.open(pic_url)
     user.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
     user.save
-    sleep(1)
+    sleep(2)
     n+=1
     puts "user #{n} created"
 end
@@ -171,7 +171,7 @@ end
     avatar = URI.open(pic_url)
     user.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
     user.save
-    sleep(1)
+    sleep(2)
     n+=1
     puts "user #{n} created"
 end
