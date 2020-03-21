@@ -60,7 +60,7 @@ class PendingApplicationsController < ApplicationController
       fill_position
       redirect_to team_positions_path(@position.team)
     else
-      redirect_to team_positions_path(@position.team)
+      redirect_to request.referrer
     end
   end
 
@@ -84,7 +84,7 @@ class PendingApplicationsController < ApplicationController
       fill_position
       redirect_to team_positions_path(@position.team)
     else
-      redirect_to team_positions_path(@position.team)
+      redirect_to request.referrer
     end
   end
 
