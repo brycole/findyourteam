@@ -32,7 +32,7 @@
       <div class="invitation-card d-flex align-items-center">
         <div class="invitation-team-image">
           <% if pending_application.position.team.photo.attached? %>
-            <%= cl_image_tag player.photo.key, height: 90, width: 90 %>
+            <%= cl_image_tag pending_application.position.team.photo.key, height: 90, width: 90 %>
           <% else %>
             <%= image_tag "void.png", height: 90, width: 90, crop: :fill %>
           <% end %>
@@ -60,7 +60,7 @@
       <div class="invitation-card d-flex align-items-center">
         <div class="invitation-team-image m-4">
           <% if pending_application.position.team.photo.attached? %>
-            <%= cl_image_tag pending_application.position.  team.photo.key, height: 90, width: 90 %>
+            <%= cl_image_tag pending_application.position.team.photo.key, height: 90, width: 90 %>
           <% else %>
             <%= image_tag "void.png", height: 90, width: 90, crop: :fill %>
           <% end %>
