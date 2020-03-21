@@ -86,6 +86,8 @@ avatar = URI.open(pic_url)
 vladi.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
 vladi.save
 
+puts "vladi profile created."
+
 rank = Rank.find_by(id: 28)
 
 rachid = User.new(
@@ -96,10 +98,12 @@ rachid = User.new(
   game: dota2,
   rank: Rank.find_by(id: 16),
   position_name_id: dota2.position_names.first.id)
-pic_url = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/rachid_gamjxo.jpg"
-avatar = URI.open(pic_url)
-rachid.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
+pic_url2 = "https://source.unsplash.com/random/?face"
+avatar2 = URI.open(pic_url2)
+rachid.photo.attach(io: avatar2, filename: 'random2.jpeg', content_type: 'image/png')
 rachid.save
+
+puts "rachid profile created."
 
 bryan = User.new(
   email: 'bryan@gmail.com',
@@ -109,10 +113,12 @@ bryan = User.new(
   game: dota2,
   rank: Rank.find_by(id: 38),
   position_name_id: dota2.position_names.first.id)
-pic_url = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/atsede_wdvqbl.jpg"
-avatar = URI.open(pic_url)
-bryan.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
+pic_url3 = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/bryan_zj5abm.png"
+avatar3 = URI.open(pic_url3)
+bryan.photo.attach(io: avatar3, filename: 'random3.jpeg', content_type: 'image/png')
 bryan.save
+
+puts "bryan profile created."
 
 atsede = User.new(
   email: 'atsede@gmail.com',
@@ -122,12 +128,14 @@ atsede = User.new(
   game: dota2,
   rank: Rank.find_by(id: 12),
   position_name_id: dota2.position_names.first.id)
-pic_url = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/atsede_wdvqbl.jpg"
-avatar = URI.open(pic_url)
-atsede.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
+pic_url4 = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/atsede_wdvqbl.jpg"
+avatar4 = URI.open(pic_url4)
+atsede.photo.attach(io: avatar4, filename: 'random4.jpeg', content_type: 'image/png')
 atsede.save
 #dota 2 users
 
+puts "atsede profile created."
+n = 0
 40.times do
   user = User.new(
     email: Faker::Name.unique.first_name + '@gmail.com',
@@ -143,6 +151,8 @@ atsede.save
     user.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
     user.save
     sleep(1)
+    n+=1
+    puts "user #{n} created"
 end
 
 #cs go users
@@ -162,6 +172,8 @@ end
     user.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
     user.save
     sleep(1)
+    n+=1
+    puts "user #{n} created"
 end
 
 puts 'Users created'
