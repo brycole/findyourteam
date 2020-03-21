@@ -56,7 +56,12 @@
             <div class="card-position">
               <h3><%= position.user.nickname %></h3>
               <br>
-              <p><%= position.user.position_name.name %></p>
+              <p>
+                <% if current_user.show_game == "2" && position.user.position_name.name == "Jungler" %>
+                  Playmaker
+                <% else %>
+                  <%= position.user.position_name.name %></p>
+                <% end %>
               <div class="card-buttons">
                 <% if @team.captain?(current_user) %>
                   <%= link_to team_position_path(@team, id:position.id), method: :put do %>
