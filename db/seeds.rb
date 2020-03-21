@@ -312,7 +312,6 @@ team16.photo.attach(io: team_logo, filename: 'team_og.png', content_type: 'image
 team16.save
 puts "team 16 created."
 puts 'Teams created'
->>>>>>> master
 
 puts 'seeding positions to teams'
 # seed positions to teams
