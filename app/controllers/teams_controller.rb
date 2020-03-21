@@ -6,7 +6,12 @@ class TeamsController < ApplicationController
     if current_user.nil?
       @teams = Team.all
     else
-      @teams = Team.where(game_id: current_user.show_game)
+      if params[:query].present?
+        sql_query = "name ILIKE :query"
+        @teams = Team.where(sql_query, query: "%#{params[:query]}%")
+      else
+        @teams = Team.where(game_id: current_user.show_game)
+      end
     end
   end
 

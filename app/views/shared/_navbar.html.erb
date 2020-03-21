@@ -42,7 +42,7 @@
           <%= link_to "Players", players_path, class: "nav-link #{ 'active-tab' if controller_name == 'players' && action_name == 'index'}" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Create a Team", teams_path, class: "nav-link #{ 'active-tab' if controller_name == 'teams' && action_name == 'new'}" %>
+          <%= link_to "Create a Team", new_team_path, class: "nav-link #{ 'active-tab' if controller_name == 'teams' && action_name == 'new'}" %>
         </li>
         <% if current_user %>
         <li class="nav-item">

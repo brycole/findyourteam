@@ -1,3 +1,21 @@
+<div class="d-flex align-items-center py-3">
+  <div class="category">
+  <div class="p-2 bg-gradient-dark mr-5"><strong>FILTER BY</strong></div>
+  <div class="p-2 bg-gradient-dark mr-5">REGION <i class="fas fa-caret-down"></i></div>
+  <div class="p-2 bg-gradient-dark mr-5">RANK <i class="fas fa-caret-down"></i></div>
+  <div class="p-2 bg-gradient-dark mr-5"><strong>SEARCH</strong></div>
+
+
+  <%= form_tag teams_path, method: :get, class: "form-inline my-form" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "ENTER TEAM NAME",
+      autocomplete: "off"
+    %>
+  <% end %>
+  </div>
+</div>
 <div class="team-cards">
   <% @teams.each do |team| %>
   <!-- <a href="<%= team_positions_path(team) %>"> --></a>
@@ -19,5 +37,11 @@
       </div>
     <% end %>
   <% end %>
+  <%= link_to new_team_path do %>
+    <div class="team-card <%= current_user.nil? ? "team-card-dota" : current_user.show_game == "1" ? "team-card-dota" : "team-card-csgo" %>" style="background-image: url(<%= asset_path("white_plus.png")%>)" >
+      <div class="team-player-roster-card">
+      </div>
+      <div class="team-name-card">Create your team</div>
+    </div>
+  <% end %>
 </div>
-<%= link_to 'Create Team', new_team_path, class: "btn btn-outline-dark btn-padding" %>

@@ -1,3 +1,28 @@
+.chat-rooms-list {
+  background-color: rgba(1, 1, 1, 0.6);
+  width: 600px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+  margin: 8px auto;
+  a {
+    color: white;
+    text-decoration: none;
+    padding-right: 8px;
+    &:hover {
+      color: grey;
+    }
+  }
+}
+
+#chat-rooms-empty-list {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
 .chat-messages {
   background-color: rgba(1, 1, 1, 0.6);
   border-radius: 8px;
