@@ -267,9 +267,32 @@ team16 = Team.new(
 team16.photo.attach(io: team_logo, filename: 'team_og.png', content_type: 'image/png')
 team16.save
 puts "team 16 created."
-
 puts 'Teams created'
 
+puts 'seeding positions to teams'
+# seed positions to teams
+dota2 = %w[Carry Jungler Offlaner Support Support]
+csgo = %w[Leader Fragger AWPer Lurker Playmaker]
+
+Team.where(game_id: 1).each do |team|
+  dota2.each do |position_name|
+    position = Position.new
+    position.team = team
+    position_name = PositionName.find_by(name: position_name)
+    position.position_name = position_name
+    position.save
+  end
+end
+
+Team.where(game_id: 2).each do |team|
+  csgo.each do |position_name|
+    position = Position.new
+    position.team = team
+    position_name = PositionName.find_by(name: position_name)
+    position.position_name = position_name
+    position.save
+  end
+end
 
 
 # 5.times do
