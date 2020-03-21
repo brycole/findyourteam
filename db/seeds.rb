@@ -81,7 +81,7 @@ vladi = User.new(
   game: dota2,
   rank: Rank.find_by(id: 28),
   position_name_id: dota2.position_names.first.id)
-pic_url = "https://avatars1.githubusercontent.com/u/36208690?v=4"
+pic_url = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/vladi_pkbwu3.jpg"
 avatar = URI.open(pic_url)
 vladi.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
 vladi.save
@@ -96,7 +96,7 @@ rachid = User.new(
   game: dota2,
   rank: Rank.find_by(id: 16),
   position_name_id: dota2.position_names.first.id)
-pic_url = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1573660923/rayadzbf4p9tjg6mgte4.jpg"
+pic_url = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/rachid_gamjxo.jpg"
 avatar = URI.open(pic_url)
 rachid.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
 rachid.save
@@ -109,7 +109,7 @@ bryan = User.new(
   game: dota2,
   rank: Rank.find_by(id: 38),
   position_name_id: dota2.position_names.first.id)
-pic_url = "https://avatars3.githubusercontent.com/u/19298910?v=4"
+pic_url = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/atsede_wdvqbl.jpg"
 avatar = URI.open(pic_url)
 bryan.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
 bryan.save
