@@ -122,7 +122,7 @@ atsede = User.new(
   game: dota2,
   rank: Rank.find_by(id: 12),
   position_name_id: dota2.position_names.first.id)
-pic_url = "https://avatars2.githubusercontent.com/u/22333099?v=4"
+pic_url = "https://res.cloudinary.com/dm4nbcc5v/image/upload/v1584800608/logos_for_seeds/atsede_wdvqbl.jpg"
 avatar = URI.open(pic_url)
 atsede.photo.attach(io: avatar, filename: 'random.jpeg', content_type: 'image/png')
 atsede.save
