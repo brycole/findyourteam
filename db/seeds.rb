@@ -133,7 +133,7 @@ end
     show_game: "2",
     game: csgo,
     rank: Rank.where(game_id: 2)[rand(0..17)],
-    position_name_id: dota2.position_names[rand(0..4)].id
+    position_name_id: csgo.position_names[rand(0..4)].id
     )
 end
 
@@ -311,6 +311,39 @@ Team.where(game_id: 2).each do |team|
   end
 end
 
+puts "Adding users to existing positions..."
+
+[1,2].each do |game_loop|
+  users = User.all
+  users = users.map do |user|
+    user if user.game_id == game_loop
+  end
+  users = users.reject{ |x| x.nil?}
+  # puts users.count
+
+  Position.all.each do |position|
+    # puts "game_loop: #{game_loop}"
+    if position.user_id
+      # puts "position has a user"
+      # puts position.user_id
+      next
+    end
+    users.each do |user|
+      if user.position_name.id == position.position_name.id &&
+         user.position_name.game.id == position.position_name.game.id
+          # puts "position found #{position.id}"
+          # puts users.count
+          random_user = rand(0..users.count)
+          position.user = users[random_user]
+          users.delete_at(random_user)
+          position.save
+          break
+      else
+        # puts "position not found"
+      end
+    end
+  end
+end
 
 # 5.times do
 #   title = Faker::Food.dish
