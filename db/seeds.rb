@@ -132,7 +132,7 @@ end
     nickname: Faker::Games::Fallout.character,
     show_game: csgo,
     game: csgo,
-    rank: Rank.find_by(id: rand(1..18)),
+    rank: Rank.where(game_id: 2)[rand(0..17)],
     position_name_id: dota2.position_names[rand(0..4)].id
     )
 end
