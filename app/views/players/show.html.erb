@@ -30,7 +30,7 @@
   <% @pending_applications.each do |pending_application| %>
     <% if pending_application.owner_approval %>
       <div class="invitation-card d-flex align-items-center">
-        <div class="invitation-team-image">
+        <div class="invitation-team-image m-4">
           <% if pending_application.position.team.photo.attached? %>
             <%= cl_image_tag pending_application.position.team.photo.key, height: 90, width: 90 %>
           <% else %>
