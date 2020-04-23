@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :set_user_team]
   before_action :set_team, only: %i[show edit destroy update]
 
   def index
@@ -16,8 +16,10 @@ class TeamsController < ApplicationController
   end
 
   def set_user_team
-    current_user.show_game = params[:game]
-    current_user.save
+    unless current_user.nil?
+      current_user.show_game = params[:game]
+      current_user.save
+    end
     redirect_to teams_path
   end
 
